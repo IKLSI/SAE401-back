@@ -2,10 +2,11 @@
 
 namespace App\Model;
 
+use App\DAO\UsersDAO;
 use App\DAO\UtilisateurDAO;
 use Exception;
 
-class UserModel extends Model
+class UsersModel extends Model
 {
     // Public attributes to represent the columns of the User table
     public $id, $name;
@@ -15,7 +16,7 @@ class UserModel extends Model
     {
         try {
             // Create a UserDAO instance to access the data layer
-            $dao = new UtilisateurDAO();
+            $dao = new UsersDAO();
             // Call UserDAO selectAll() method to get all records
             // Results are stored in the $rows property
             $this->rows = $dao->selectAll();
@@ -24,4 +25,17 @@ class UserModel extends Model
             throw $e;
         }
     }
+	public function get(int $id)
+	{
+		try {
+			// Create a UserDAO instance to access the data layer
+			$dao = new UsersDAO();
+			// Call UserDAO selectAll() method to get all records
+			// Results are stored in the $rows property
+			$this->rows = $dao->select($id);
+		} catch (Exception $e) {
+			// Throws an exception in case of error during execution
+			throw $e;
+		}
+	}
 }

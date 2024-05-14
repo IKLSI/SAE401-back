@@ -44,6 +44,10 @@ class Router
 	{
 		return $uri === parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 	}
+	private static function getCurrentUri(): string
+	{
+		return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+	}
 
 	/**
 	 * Registers a new route with the given HTTP method, URI, and callback function.
@@ -92,6 +96,12 @@ class Router
 	public static function listen()
 	{
 		foreach (self::$routes as $route) {
+			$arr = explode("/", $route['uri']);
+			$lastPartUrlServer = $arr[array_key_last($arr)-1];
+
+			
+			echo self::getCurrentUri(). "\n";
+			echo $arr[array_key_last($arr)-1]. "\n"; 
 			if (self::isCurrentUri($route['uri'])) {
 				self::checkMethod($route['method']);
 				$cb = $route['callback'];
@@ -105,5 +115,12 @@ class Router
 		}
 
 		self::handleNotFound();
+	}
+	public function testSubstituteURL($urlServer, $urlClient) {
+
+		/**
+		 * Function qui sert à regarder si le dernier élément du serveur est * et donc si cela peut être un id
+		 */
+		
 	}
 }

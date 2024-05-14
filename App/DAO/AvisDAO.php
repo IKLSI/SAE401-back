@@ -2,9 +2,9 @@
 
 namespace App\DAO;
 
-class UtilisateurDAO extends DAO
+class AvisDAO extends DAO
 {
-    // Constructor to initialize the UserDAO object
+    // Constructor to initialize the AvisDAO object
     public function __construct()
     {
         // Call the parent class constructor (DAO) to initialize the database connection
@@ -15,7 +15,7 @@ class UtilisateurDAO extends DAO
     public function selectAll()
     {
         // Definition of the SQL query to select all records from the "User" table
-        $sql = "SELECT * FROM User";
+        $sql = "SELECT * FROM Avis";
 
         // Prepare SQL query using database connection
         $stmt = $this->conn->prepare($sql);
@@ -29,7 +29,7 @@ class UtilisateurDAO extends DAO
 	public function select(int $id)
 	{
 		// Definition of the SQL query to select all records from the "User" table
-		$sql = "SELECT * FROM User WHERE id = :id";
+		$sql = "SELECT * FROM Avis WHERE id = :id";
 
 		// Prepare SQL query using database connection
 		$stmt = $this->conn->prepare($sql);
