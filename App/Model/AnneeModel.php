@@ -37,4 +37,19 @@ class AnneeModel extends Model
 			throw $e;
 		}
 	}
+
+    public function insert()
+    {
+        try {
+            // Create a new AnneeDAO instance to access the data layer
+            $dao = new AnneeDAO();
+            // Call the insert method of AnneeDAO and pass this AnneeModel instance
+            $dao->insert($this);
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
+
+    
 }

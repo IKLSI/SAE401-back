@@ -37,4 +37,18 @@ class AvisModel extends Model
 			throw $e;
 		}
 	}
+
+    // Method to insert an AvisModel record into the Avis table
+    public function insert()
+    {
+        try {
+            // Create a new AvisDAO instance to access the data layer
+            $dao = new AvisDAO();
+            // Call the insert method of AvisDAO and pass this AvisModel instance
+            $dao->insert($this);
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
 }

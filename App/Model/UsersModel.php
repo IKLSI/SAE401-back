@@ -39,4 +39,18 @@ class UsersModel extends Model
 			throw $e;
 		}
 	}
+
+     // Method to insert a UsersModel record into the Users table
+     public function insert()
+     {
+         try {
+             // Create a new UsersDAO instance to access the data layer
+             $dao = new UsersDAO();
+             // Call the insert method of UsersDAO and pass this UsersModel instance
+             $dao->insert($this);
+         } catch (Exception $e) {
+             // Throws an exception in case of error during execution
+             throw $e;
+         }
+     }
 }

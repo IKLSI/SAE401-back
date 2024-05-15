@@ -1,6 +1,8 @@
 <?php
 
 namespace App\DAO;
+use Exception;
+use App\Model\UsersModel;
 
 class UsersDAO extends DAO
 {
@@ -43,4 +45,28 @@ class UsersDAO extends DAO
 		// Returns all query results as class objects (based on DAO class)
 		return $stmt->fetchAll(DAO::FETCH_CLASS);
 	}
+
+    public function insert(UsersModel $user)
+    {
+        try {
+            // Definition of the SQL query to insert a new record into the "Users" table
+            $sql = "INSERT INTO Users (login, password, isadmin) VALUES (:login, :password, :isadmin)";
+            
+            // Prepare SQL query using database connection
+            $stmt = $this->conn->prepare($sql);
+            
+            // Bind parameters
+            $stmt->bindValue(':password', $user->password);
+            $stmt->bindValue(':isadmin', $user->isadmin);
+
+            // Execute the prepared query
+            $stmt->execute();
+
+            // Close the statement
+            $stmt->close();
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
 }
