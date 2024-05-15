@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS Utilisateur CASCADE;
 
 CREATE TABLE Etudiant
 (
-    id_etu int,
+    id_etu SERIAL,
     code_etu VARCHAR(10),
     nom_etu VARCHAR(30),
     prenom_etu VARCHAR(30),
@@ -25,14 +25,14 @@ CREATE TABLE Etudiant
 
 CREATE TABLE Annee 
 (
-    id_annee int,
+    id_annee SERIAL,
     annee VARCHAR(9),
     PRIMARY KEY (id_annee)
 );
 
 CREATE TABLE Semestre
 (
-    id_semestre int,
+    id_semestre SERIAL,
     label VARCHAR(12),
     id_annee int,
     PRIMARY KEY (id_semestre),
@@ -41,7 +41,7 @@ CREATE TABLE Semestre
 
 CREATE TABLE Competence 
 (
-    id_comp int,
+    id_comp SERIAL,
     id_semestre int,
     label VARCHAR(50),
     PRIMARY KEY (id_comp),
@@ -50,14 +50,14 @@ CREATE TABLE Competence
 
 CREATE TABLE Module
 (
-    id_module int,
+    id_module SERIAL,
     label VARCHAR(50),
     PRIMARY KEY (id_module)
 );
 
 CREATE TABLE Coefficient 
 (
-    id_coef int,
+    id_coef SERIAL,
     id_comp int,
     id_module int,
     coef int,   
@@ -101,7 +101,7 @@ CREATE TABLE EtuModule
 
 CREATE TABLE Avis 
 (
-    id_avis int,
+    id_avis SERIAL,
     id_etu int,
     avis_master TEXT,
     avis_inge TEXT,
@@ -111,7 +111,7 @@ CREATE TABLE Avis
 
 CREATE TABLE Utilisateur 
 (
-    id_user int,
+    id_user SERIAL,
     login_user VARCHAR(50),
     password_user VARCHAR(50),
     isAdmin BOOLEAN,

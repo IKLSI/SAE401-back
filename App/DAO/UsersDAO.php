@@ -56,6 +56,7 @@ class UsersDAO extends DAO
             $stmt = $this->conn->prepare($sql);
             
             // Bind parameters
+            $stmt->bindValue(':login', $user->login);
             $stmt->bindValue(':password', $user->password);
             $stmt->bindValue(':isadmin', $user->isadmin);
 
