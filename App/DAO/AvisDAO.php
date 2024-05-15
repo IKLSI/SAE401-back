@@ -47,7 +47,7 @@ class AvisDAO extends DAO
     public function selectByEtu(int $id)
 	{
 		// Definition of the SQL query to select all records from the "Avis" table
-		$sql = "SELECT * FROM Avis WHERE id_etu = :id";
+		$sql = "SELECT * FROM Avis WHERE id_ = :id";
 
 		// Prepare SQL query using database connection
 		$stmt = $this->conn->prepare($sql);
