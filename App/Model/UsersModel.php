@@ -9,7 +9,7 @@ use Exception;
 class UsersModel extends Model
 {
     // Public attributes to represent the columns of the User table
-    public $id, $name;
+    public $id_user, $login_user, $password_user,$isadmin;
 
     // Method to get all records from the User table
     public function getAll()
@@ -19,7 +19,8 @@ class UsersModel extends Model
             $dao = new UsersDAO();
             // Call UserDAO selectAll() method to get all records
             // Results are stored in the $rows property
-            $dao->selectAll();
+            
+			$this->rows = $dao->selectAll();
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
             throw $e;
