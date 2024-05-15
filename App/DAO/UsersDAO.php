@@ -29,7 +29,7 @@ class UsersDAO extends DAO
 	public function select(int $id)
 	{
 		// Definition of the SQL query to select all records from the "User" table
-		$sql = "SELECT * FROM Utilisateurs WHERE id = :id";
+		$sql = "SELECT * FROM Utilisateur WHERE id_user = :id";
 
 		// Prepare SQL query using database connection
 		$stmt = $this->conn->prepare($sql);

@@ -23,12 +23,11 @@ class UsersController extends Controller
     {
 		
         // Create a new UserModel instance to access the model layer
-        //$model = new UsersModel();
-        
+        $model = new UsersModel();
         // Call UsersModel getAll() method to get all records
-        //$model->get($id);
+        $model->get($id);
         
         // Sends the response in JSON format containing the records obtained
-        parent::sendJSONResponse($id);
+        parent::sendJSONResponse($model->rows);
     }
 }

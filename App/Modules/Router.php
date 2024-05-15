@@ -96,18 +96,18 @@ class Router
 	public static function listen()
 	{
 		foreach (self::$routes as $route) {
-			
+
 			$isModifiedUrl = self::testSubstituteURL($route['uri'], self::getCurrentUri());
 			if (self::isCurrentUri($route['uri']) || $isModifiedUrl) {
-				
+
 				self::checkMethod($route['method']);
 				$cb = $route['callback'];
 
 				if (method_exists(...$cb)) {
-					if ($isModifiedUrl){
+					if ($isModifiedUrl) {
 						$arrRoute = explode("/", self::getCurrentUri());
-						$id = (int) $arrRoute[sizeof($arrRoute)];
-						
+						$id = (int) $arrRoute[count($arrRoute)-1];
+
 						$route['callback']($id);
 					} else {
 						$route['callback']();
@@ -120,21 +120,27 @@ class Router
 
 		self::handleNotFound();
 	}
-	public static function testSubstituteURL($urlServer, $urlClient) {
+	public static function testSubstituteURL($urlServer, $urlClient)
+	{
 
 		/**
 		 * Function qui sert à regarder si le dernier élément du serveur est * et donc si le n-1 est égal et si la taille des 2 urls
 		 */
 		$arrRoute = explode("/", $urlServer);
 		$arrRouteActual = explode("/", $urlClient);
-		if (($arrRoute[sizeof($arrRoute)-1] == "*") && 
-		($arrRouteActual[sizeof($arrRouteActual)-1] == $arrRoute[sizeof($arrRoute)-1]) &&
-		(sizeof($arrRoute) == sizeof($arrRouteActual))
-		){
-			return true;
+		if (($arrRoute[count($arrRoute) - 1] == "*")) {
+
+			if (($arrRouteActual[count($arrRouteActual) - 2] == $arrRoute[count($arrRoute) - 2])) {
+
+				if ((count($arrRoute) == count($arrRouteActual))) {
+
+					return true;
+				}
+			}
+
+
 		}
 		return false;
-		
-		
 	}
+
 }
