@@ -31,8 +31,7 @@ class UsersController extends Controller
         parent::sendJSONResponse($model->rows);
     }
 	public static function addUser() {
-		$php = parent::receiveJSONRequest();
-		
+		$php = parent::receiveJSONRequest();	
 		parent::sendJSONResponse($php);
 	}
 }
