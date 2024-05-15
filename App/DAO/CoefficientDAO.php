@@ -47,7 +47,7 @@ class CoefficientDAO extends DAO
 	}
 
     // Method to insert a new record into the "Coefficient" table
-    public function insert(CoefficientModel $coef)
+    public function insert($id_comp, $id_module, $coef)
     {
         try {
             // Definition of the SQL query to insert a new record into the "Coefficient" table
@@ -57,15 +57,14 @@ class CoefficientDAO extends DAO
             $stmt = $this->conn->prepare($sql);
             
             // Bind parameters
-            $stmt->bindValue(':id_comp', $coef->id_comp);
-            $stmt->bindValue(':id_module', $coef->id_module);
-            $stmt->bindValue(':coef', $coef->coef);
+            $stmt->bindValue(':id_comp', $id_comp);
+            $stmt->bindValue(':id_module', $id_module);
+            $stmt->bindValue(':coef', $coef);
 
             // Execute the prepared query
             $stmt->execute();
+            return "Coefficient added successfully!";
 
-            // Close the statement
-            $stmt->close();
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
             throw $e;

@@ -45,7 +45,7 @@ class CoefficientModel extends Model
             // Create a new CoefficientDAO instance to access the data layer
             $dao = new CoefficientDAO();
             // Call the insert method of CoefficientDAO and pass this CoefficientModel instance
-            $dao->insert($this);
+            $dao->insert($this->id_comp, $this->id_module, $this->coef);
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
             throw $e;

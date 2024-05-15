@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ModuleModel;
+use Exception;
 
 class ModuleController extends Controller
 {
@@ -28,5 +29,27 @@ class ModuleController extends Controller
         
         // Sends the response in JSON format containing the records obtained
         parent::sendJSONResponse($model->rows);
+    }
+
+    public static function addUser()
+    {
+        $data = parent::receiveJSONRequest()[0];
+
+        try {
+            // Create a new ModuleModel instance
+            $user = new ModuleModel();
+			
+            // Assign data from the POST request to the ModuleModel object
+            $user->label = $data['label'];
+
+            // Call the insert method of ModuleModel to insert the data into the database
+            $user->insert();
+        } catch (Exception $e) {
+            // Handle the exception (e.g., return an error response)
+            return "Error: " . $e->getMessage();
+        }
+        
+        // If everything is successful, return a success message or redirect to another page
+        parent::sendJSONResponse("User added successfully!");
     }
 }

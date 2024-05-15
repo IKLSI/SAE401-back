@@ -118,14 +118,14 @@ CREATE TABLE Utilisateur
     PRIMARY KEY (id_user)
 );
 
-INSERT INTO Etudiant VALUES (1, '221111', 'NOM', 'PRENOM', 'A', 'A2', 'S1 S2', false);
-INSERT INTO Annee  VALUES (1, '2022-2023');
-INSERT INTO Semestre VALUES (1, 'Semestre 1' ,1);
-INSERT INTO Competence  VALUES (1, 1, 'BIN1');
-INSERT INTO Module VALUES (1, 'BIN1.1');
-INSERT INTO Coefficient  VALUES (1, 1, 1, 12);
+INSERT INTO Etudiant (code_etu, nom_etu, prenom_etu, groupe_TD, groupe_TP, cursus, alternant) VALUES ('221111', 'NOM', 'PRENOM', 'A', 'A2', 'S1 S2', false);
+INSERT INTO Annee (annee) VALUES ('2022-2023');
+INSERT INTO Semestre (label, id_annee) VALUES ('Semestre 1' ,1);
+INSERT INTO Competence (id_semestre, label) VALUES (1, 'BIN1');
+INSERT INTO Module (label) VALUES ('BIN1.1');
+INSERT INTO Coefficient (id_comp, id_module, coef) VALUES (1, 1, 12);
 INSERT INTO EtuSemestre VALUES (1, 1, 5, 2, 16.12);
 INSERT INTO EtuComp VALUES (1, 1, 15.15, 'ADM');
 INSERT INTO EtuModule VALUES (1, 1, 12.00);
-INSERT INTO Avis VALUES (1, 1, 'Passable', 'Passable');
-INSERT INTO Utilisateur VALUES (1, 'admin', 'admin', true);
+INSERT INTO Avis (id_etu, avis_master, avis_inge) VALUES (1, 'Passable', 'Passable');
+INSERT INTO Utilisateur (login_user, password_user, isAdmin) VALUES ('admin', 'admin', true);

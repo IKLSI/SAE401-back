@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\SemestreModel;
+use Exception;
 
 class SemestreController extends Controller
 {
@@ -28,5 +29,28 @@ class SemestreController extends Controller
         
         // Sends the response in JSON format containing the records obtained
         parent::sendJSONResponse($model->rows);
+    }
+
+    public static function addUser()
+    {
+        $data = parent::receiveJSONRequest()[0];
+
+        try {
+            // Create a new SemestreModel instance
+            $user = new SemestreModel();
+			
+            // Assign data from the POST request to the SemestreModel object
+            $user->id_annee = $data['id_annee'];
+            $user->label = $data['label'];
+
+            // Call the insert method of SemestreModel to insert the data into the database
+            $user->insert();
+        } catch (Exception $e) {
+            // Handle the exception (e.g., return an error response)
+            return "Error: " . $e->getMessage();
+        }
+        
+        // If everything is successful, return a success message or redirect to another page
+        parent::sendJSONResponse("SemestreModel added successfully!");
     }
 }

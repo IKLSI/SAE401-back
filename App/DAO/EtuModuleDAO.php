@@ -1,6 +1,7 @@
 <?php
 
 namespace App\DAO;
+use Exception;
 
 class EtuModuleDAO extends DAO
 {
@@ -43,4 +44,27 @@ class EtuModuleDAO extends DAO
 		// Returns all query results as class objects (based on DAO class)
 		return $stmt->fetchAll(DAO::FETCH_CLASS);
 	}
+
+    public function insert(int $id_etu, int $id_coef, float $note)
+    {
+        try {
+            // Definition of the SQL query to insert a new record into the "Users" table
+            $sql = "INSERT INTO EtuModule (id_etu, id_coef, note) VALUES (:id_etu, :id_coef, :note)";
+            
+            // Prepare SQL query using database connection
+            $stmt = $this->conn->prepare($sql);
+            
+            // Bind parameters
+			$stmt->bindValue(':id_etu', $id_etu);
+            $stmt->bindValue(':id_coef', $id_coef);
+            $stmt->bindValue(':note', $note);
+
+            // Execute the prepared query
+            $stmt->execute();
+            return "EtuModule added successfully!";
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
 }

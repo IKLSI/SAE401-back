@@ -33,6 +33,8 @@ class CoefficientController extends Controller
 
     public function addCoefficient($data)
     {
+        $data = parent::receiveJSONRequest()[0];
+
         try {
             // Create a new CoefficientModel instance
             $coef = new CoefficientModel();
@@ -50,6 +52,6 @@ class CoefficientController extends Controller
         }
         
         // If everything is successful, return a success message or redirect to another page
-        return "Coefficient added successfully!";
+        parent::sendJSONResponse("Coefficient added successfully!");
     }
 }

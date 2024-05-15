@@ -37,4 +37,18 @@ class EtuCompModel extends Model
 			throw $e;
 		}
 	}
+
+    // Method to insert a UsersModel record into the Users table
+    public function insert()
+    {
+        try {
+            // Create a new EtuCompDAO instance to access the data layer
+            $dao = new EtuCompDAO();
+            // Call the insert method of EtuCompDAO and pass this UsersModel instance
+            $dao->insert($this->id_etu, $this->id_comp,$this->moyenne_comp,$this->passage);
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
 }

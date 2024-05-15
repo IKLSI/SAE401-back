@@ -37,4 +37,18 @@ class EtuSemestreModel extends Model
 			throw $e;
 		}
 	}
+
+     // Method to insert a EtuSemestreDAO record into the Users table
+     public function insert()
+     {
+         try {
+             // Create a new EtuSemestreDAO instance to access the data layer
+             $dao = new EtuSemestreDAO();
+             // Call the insert method of EtuSemestreDAO and pass this EtuSemestreDAO instance
+             $dao->insert($this->id_etu, $this->id_semestre,$this->absences, $this->rang, $this->moyenne);
+         } catch (Exception $e) {
+             // Throws an exception in case of error during execution
+             throw $e;
+         }
+     }
 }

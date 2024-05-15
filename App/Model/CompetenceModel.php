@@ -45,7 +45,7 @@ class CompetenceModel extends Model
             // Create a new CompetenceDAO instance to access the data layer
             $dao = new CompetenceDAO();
             // Call the insert method of CompetenceDAO and pass this CompetenceModel instance
-            $dao->insert($this);
+            $dao->insert($this->id_semestre, $this->label);
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
             throw $e;

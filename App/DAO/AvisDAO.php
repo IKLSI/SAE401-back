@@ -46,7 +46,7 @@ class AvisDAO extends DAO
 		return $stmt->fetchAll(DAO::FETCH_CLASS);
 	}
 
-    public function insert(AvisModel $avis)
+    public function insert(int $id_etu, String $avis_master, String $avis_inge)
     {
         try {
             // Definition of the SQL query to insert a new record into the "Avis" table
@@ -56,13 +56,13 @@ class AvisDAO extends DAO
             $stmt = $this->conn->prepare($sql);
             
             // Bind parameters
-            $stmt->bindValue(':id_etu', $avis->id_etu);
-            $stmt->bindValue(':avis_master', $avis->avis_master);
-            $stmt->bindValue(':avis_inge', $avis->avis_inge);
+            $stmt->bindValue(':id_etu', $id_etu);
+            $stmt->bindValue(':avis_master', $avis_master);
+            $stmt->bindValue(':avis_inge', $avis_inge);
 
             // Execute the prepared query
             $stmt->execute();
-
+            return "Avis added successfully!";
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
             throw $e;

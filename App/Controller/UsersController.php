@@ -34,8 +34,7 @@ class UsersController extends Controller
     public static function addUser()
     {
         $data = parent::receiveJSONRequest()[0];
-		
-		
+
         try {
             // Create a new UsersModel instance
             $user = new UsersModel();

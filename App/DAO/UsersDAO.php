@@ -62,11 +62,9 @@ class UsersDAO extends DAO
 
             // Execute the prepared query
             $stmt->execute();
-			echo "User added successfully!";
             return "User added successfully!";
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
-			echo $e->getMessage();
             throw $e;
         }
     }

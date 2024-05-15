@@ -47,7 +47,7 @@ class CompetenceDAO extends DAO
 	}
 
     // Method to insert a new record into the "Competence" table
-    public function insert(CompetenceModel $comp)
+    public function insert(int $id_semestre, String $label)
     {
         try {
             // Definition of the SQL query to insert a new record into the "Competence" table
@@ -57,12 +57,12 @@ class CompetenceDAO extends DAO
             $stmt = $this->conn->prepare($sql);
             
             // Bind parameters
-            $stmt->bindValue(':id_semestre', $comp->id_semestre);
-            $stmt->bindValue(':label', $comp->label);
+            $stmt->bindValue(':id_semestre', $id_semestre);
+            $stmt->bindValue(':label', $label);
 
             // Execute the prepared query
             $stmt->execute();
-
+            return "Competence added successfully!";
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
             throw $e;

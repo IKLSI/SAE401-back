@@ -33,6 +33,8 @@ class EtudiantController extends Controller
 
     public function addEtudiant($data)
     {
+        $data = parent::receiveJSONRequest()[0];
+
         try {
             // Create a new EtudiantModel instance
             $etudiant = new EtudiantModel();
@@ -54,6 +56,6 @@ class EtudiantController extends Controller
         }
         
         // If everything is successful, return a success message or redirect to another page
-        return "Etudiant added successfully!";
+        parent::sendJSONResponse("Etudiant added successfully!");
     }
 }

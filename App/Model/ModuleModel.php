@@ -37,4 +37,18 @@ class ModuleModel extends Model
 			throw $e;
 		}
 	}
+
+     // Method to insert a ModuleDAO record into the Users table
+     public function insert()
+     {
+         try {
+             // Create a new ModuleDAO instance to access the data layer
+             $dao = new ModuleDAO();
+             // Call the insert method of ModuleDAO and pass this UsersModel instance
+             $dao->insert($this->label);
+         } catch (Exception $e) {
+             // Throws an exception in case of error during execution
+             throw $e;
+         }
+     }
 }

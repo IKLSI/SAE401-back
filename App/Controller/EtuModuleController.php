@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\EtuModuleModel;
+use Exception;
 
 class EtuModuleController extends Controller
 {
@@ -28,5 +29,29 @@ class EtuModuleController extends Controller
         
         // Sends the response in JSON format containing the records obtained
         parent::sendJSONResponse($model->rows);
+    }
+
+    public static function addUser()
+    {
+        $data = parent::receiveJSONRequest()[0];
+
+        try {
+            // Create a new EtuModuleModel instance
+            $user = new EtuModuleModel();
+			
+            // Assign data from the POST request to the EtuModuleModel object
+            $user->id_etu = $data['id_etu'];
+            $user->id_coef = $data['id_coef'];
+            $user->note = $data['note'];
+
+            // Call the insert method of EtuModuleModel to insert the data into the database
+            $user->insert();
+        } catch (Exception $e) {
+            // Handle the exception (e.g., return an error response)
+            return "Error: " . $e->getMessage();
+        }
+        
+        // If everything is successful, return a success message or redirect to another page
+        parent::sendJSONResponse("EtuModule added successfully!");
     }
 }

@@ -34,6 +34,7 @@ class AvisController extends Controller
     // Method to handle a POST request to add a new Avis
     public function addAvis($data)
     {
+        $data = parent::receiveJSONRequest()[0];
         try {
             // Create a new AvisModel instance
             $avis = new AvisModel();
@@ -51,6 +52,6 @@ class AvisController extends Controller
         }
         
         // If everything is successful, return a success message or redirect to another page
-        return "Avis added successfully!";
+        parent::sendJSONResponse("Avis added successfully!");
     }
 }

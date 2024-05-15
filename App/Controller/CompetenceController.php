@@ -33,6 +33,8 @@ class CompetenceController extends Controller
 
     public function addCompetence($data)
     {
+        $data = parent::receiveJSONRequest()[0];
+
         try {
             // Create a new CompetenceModel instance
             $comp = new CompetenceModel();
@@ -49,6 +51,6 @@ class CompetenceController extends Controller
         }
         
         // If everything is successful, return a success message or redirect to another page
-        return "Competence added successfully!";
+        parent::sendJSONResponse("Competence added successfully!");
     }
 }

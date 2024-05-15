@@ -1,7 +1,7 @@
 <?php
 
 namespace App\DAO;
-
+use Exception;
 class ModuleDAO extends DAO
 {
     // Constructor to initialize the ModuleDAO object
@@ -43,4 +43,25 @@ class ModuleDAO extends DAO
 		// Returns all query results as class objects (based on DAO class)
 		return $stmt->fetchAll(DAO::FETCH_CLASS);
 	}
+
+    public function insert(String $label)
+    {
+        try {
+            // Definition of the SQL query to insert a new record into the "Users" table
+            $sql = "INSERT INTO Module (label) VALUES (:label)";
+            
+            // Prepare SQL query using database connection
+            $stmt = $this->conn->prepare($sql);
+            
+            // Bind parameters
+			$stmt->bindValue(':label', $label);
+
+            // Execute the prepared query
+            $stmt->execute();
+            return "Module added successfully!";
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
 }

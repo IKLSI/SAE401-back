@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\EtuCompModel;
+use Exception;
 
 class EtuCompController extends Controller
 {
@@ -28,5 +29,30 @@ class EtuCompController extends Controller
         
         // Sends the response in JSON format containing the records obtained
         parent::sendJSONResponse($model->rows);
+    }
+
+    public static function addUser()
+    {
+        $data = parent::receiveJSONRequest()[0];
+
+        try {
+            // Create a new UsersModel instance
+            $user = new EtuCompModel();
+			
+            // Assign data from the POST request to the UsersModel object
+            $user->id_etu = $data['id_etu'];
+            $user->id_comp = $data['id_comp'];
+            $user->moyenne_comp = $data['moyenne_comp'];
+            $user->passage = $data['passage'];
+
+            // Call the insert method of UsersModel to insert the data into the database
+            $user->insert();
+        } catch (Exception $e) {
+            // Handle the exception (e.g., return an error response)
+            return "Error: " . $e->getMessage();
+        }
+        
+        // If everything is successful, return a success message or redirect to another page
+        parent::sendJSONResponse("EtuComp added successfully!");
     }
 }

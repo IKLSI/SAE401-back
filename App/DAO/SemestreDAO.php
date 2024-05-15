@@ -1,6 +1,7 @@
 <?php
 
 namespace App\DAO;
+use Exception;
 
 class SemestreDAO extends DAO
 {
@@ -43,4 +44,26 @@ class SemestreDAO extends DAO
 		// Returns all query results as class objects (based on DAO class)
 		return $stmt->fetchAll(DAO::FETCH_CLASS);
 	}
+
+    public function insert(String $label, int $id_annee)
+    {
+        try {
+            // Definition of the SQL query to insert a new record into the "Users" table
+            $sql = "INSERT INTO Semestre (label, id_annee) VALUES (:label, :id_annee)";
+            
+            // Prepare SQL query using database connection
+            $stmt = $this->conn->prepare($sql);
+            
+            // Bind parameters
+			$stmt->bindValue(':label', $label);
+            $stmt->bindValue(':id_annee', $id_annee);
+
+            // Execute the prepared query
+            $stmt->execute();
+            return "Semestre added successfully!";
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
 }

@@ -31,8 +31,10 @@ class AnneeController extends Controller
         parent::sendJSONResponse($model->rows);
     }
 
-    public function addAnnee($data)
+    public function addAnnee()
     {
+        $data = parent::receiveJSONRequest()[0];
+
         try {
             // Create a new AnneeModel instance
             $annee = new AnneeModel();
@@ -48,6 +50,6 @@ class AnneeController extends Controller
         }
         
         // If everything is successful, return a success message or redirect to another page
-        return "Annee added successfully!";
+        parent::sendJSONResponse("Annee added successfully!");
     }
 }

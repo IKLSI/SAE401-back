@@ -1,6 +1,7 @@
 <?php
 
 namespace App\DAO;
+use Exception;
 
 class EtuCompDAO extends DAO
 {
@@ -43,4 +44,29 @@ class EtuCompDAO extends DAO
 		// Returns all query results as class objects (based on DAO class)
 		return $stmt->fetchAll(DAO::FETCH_CLASS);
 	}
+
+    public function insert(int $id_etu, int $id_comp, float $moyenne_comp, String $passage)
+    {
+        try {
+            // Definition of the SQL query to insert a new record into the "Users" table
+            $sql = "INSERT INTO EtuComp (id_etu, id_comp, moyenne_comp, passage) VALUES (:id_etu, :id_comp, :moyenne_comp, :passage)";
+            
+            // Prepare SQL query using database connection
+            $stmt = $this->conn->prepare($sql);
+            
+            // Bind parameters
+			$stmt->bindValue(':id_etu', $id_etu);
+            $stmt->bindValue(':id_comp', $id_comp);
+            $stmt->bindValue(':moyenne_comp', $moyenne_comp);
+            $stmt->bindValue(':passage', $passage);
+
+
+            // Execute the prepared query
+            $stmt->execute();
+            return "User added successfully!";
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
 }

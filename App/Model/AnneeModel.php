@@ -44,7 +44,7 @@ class AnneeModel extends Model
             // Create a new AnneeDAO instance to access the data layer
             $dao = new AnneeDAO();
             // Call the insert method of AnneeDAO and pass this AnneeModel instance
-            $dao->insert($this);
+            $dao->insert($this->annee);
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
             throw $e;

@@ -46,7 +46,7 @@ class AnneeDAO extends DAO
 		return $stmt->fetchAll(DAO::FETCH_CLASS);
 	}
 
-    public function insert(AnneeModel $annee)
+    public function insert(String $annee)
     {
         try {
             // Definition of the SQL query to insert a new record into the "Annee" table
@@ -56,11 +56,11 @@ class AnneeDAO extends DAO
             $stmt = $this->conn->prepare($sql);
             
             // Bind parameters
-            $stmt->bindValue(':annee', $annee->annee);
+            $stmt->bindValue(':annee', $annee);
 
             // Execute the prepared query
             $stmt->execute();
-
+            return "Annee added successfully!";
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
             throw $e;

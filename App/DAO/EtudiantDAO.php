@@ -47,7 +47,7 @@ class EtudiantDAO extends DAO
 	}
 
 	// Method to insert a new record into the Etudiant table
-    public function insert(EtudiantModel $etudiant)
+    public function insert(String $code_etu, String $nom_etu, String $prenom_etu, String $groupe_TD, String $groupe_TP, String $cursus, $alternant)
     {
         try {
             // Definition of the SQL query to insert a new record into the "Etudiant" table
@@ -58,13 +58,13 @@ class EtudiantDAO extends DAO
             $stmt = $this->conn->prepare($sql);
             
             // Bind parameters
-            $stmt->bindValue(':code_etu', $etudiant->code_etu);
-            $stmt->bindValue(':nom_etu', $etudiant->nom_etu);
-            $stmt->bindValue(':prenom_etu', $etudiant->prenom_etu);
-            $stmt->bindValue(':groupe_TD', $etudiant->groupe_TD);
-            $stmt->bindValue(':groupe_TP', $etudiant->groupe_TP);
-            $stmt->bindValue(':cursus', $etudiant->cursus);
-            $stmt->bindValue(':alternant', $etudiant->alternant);
+            $stmt->bindValue(':code_etu', $code_etu);
+            $stmt->bindValue(':nom_etu', $nom_etu);
+            $stmt->bindValue(':prenom_etu', $prenom_etu);
+            $stmt->bindValue(':groupe_TD', $groupe_TD);
+            $stmt->bindValue(':groupe_TP', $groupe_TP);
+            $stmt->bindValue(':cursus', $cursus);
+            $stmt->bindValue(':alternant', $alternant);
 
             // Execute the prepared query
             $stmt->execute();
