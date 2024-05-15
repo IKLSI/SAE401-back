@@ -127,7 +127,7 @@ class Router
 		 */
 		$arrRoute = explode("/", $urlServer);
 		$arrRouteActual = explode("/", $urlClient);
-		if ($arrRoute[array_key_last($arrRoute)] == "*" && $arrRouteActual[array_key_last($arrRouteActual)-1] == $arrRoute[array_key_last($arrRoute)-1]){
+		if (($arrRoute[sizeof($arrRoute)-1] == "*") && ($arrRouteActual[array_key_last($arrRouteActual)-1] == $arrRoute[array_key_last($arrRoute)-1])){
 			return true;
 		}
 		return false;

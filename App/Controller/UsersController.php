@@ -11,13 +11,13 @@ class UsersController extends Controller
     public static function index(): void
     {
         // Create a new UserModel instance to access the model layer
-        $model = new UsersModel();
+        //$model = new UsersModel();
         
         // Call UsersModel getAll() method to get all records
         //$model->getAll();
-        
+        $arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
         // Sends the response in JSON format containing the records obtained
-        parent::sendJSONResponse($model->rows);
+        parent::sendJSONResponse($arr);
     }
     public static function show(int $id): void
     {
@@ -27,7 +27,7 @@ class UsersController extends Controller
         
         // Call UsersModel getAll() method to get all records
         //$model->get($id);
-        $arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
+        
         // Sends the response in JSON format containing the records obtained
         parent::sendJSONResponse($id);
     }
