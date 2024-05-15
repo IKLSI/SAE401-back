@@ -2,21 +2,21 @@
 
 namespace App\Model;
 
-use App\DAO\AvisDAO;
+use App\DAO\ModuleDAO;
 use Exception;
 
-class AvisModel extends Model
+class ModuleModel extends Model
 {
     // Public attributes to represent the columns of the Avis table
-    public $id_avis, $id_etu, $avis_master, $avis_inge;
+    public $id_module, $label;
 
     // Method to get all records from the User table
     public function getAll()
     {
         try {
-            // Create a AvisDAO instance to access the data layer
-            $dao = new AvisDAO();
-            // Call AvisDAO selectAll() method to get all records
+            // Create a ModuleDAO instance to access the data layer
+            $dao = new ModuleDAO();
+            // Call ModuleDAO selectAll() method to get all records
             // Results are stored in the $rows property
             $this->rows = $dao->selectAll();
         } catch (Exception $e) {
@@ -27,9 +27,9 @@ class AvisModel extends Model
 	public function get(int $id)
 	{
 		try {
-			// Create a AvisDAO instance to access the data layer
-			$dao = new AvisDAO();
-			// Call AvisDAO selectAll() method to get all records
+			// Create a ModuleDAO instance to access the data layer
+			$dao = new ModuleDAO();
+			// Call ModuleDAO selectAll() method to get all records
 			// Results are stored in the $rows property
 			$this->rows = $dao->select($id);
 		} catch (Exception $e) {
