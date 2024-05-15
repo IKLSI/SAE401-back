@@ -31,7 +31,7 @@ class EtuCompController extends Controller
         parent::sendJSONResponse($model->rows);
     }
 
-    public static function addUser()
+    public static function addEtuComp()
     {
         $data = parent::receiveJSONRequest()[0];
 

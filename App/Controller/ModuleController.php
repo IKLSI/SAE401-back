@@ -31,7 +31,7 @@ class ModuleController extends Controller
         parent::sendJSONResponse($model->rows);
     }
 
-    public static function addUser()
+    public static function addModule()
     {
         $data = parent::receiveJSONRequest()[0];
 

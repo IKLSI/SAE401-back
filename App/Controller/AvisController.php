@@ -32,7 +32,7 @@ class AvisController extends Controller
     }
 
     // Method to handle a POST request to add a new Avis
-    public function addAvis($data)
+    public function addAvis()
     {
         $data = parent::receiveJSONRequest()[0];
         try {

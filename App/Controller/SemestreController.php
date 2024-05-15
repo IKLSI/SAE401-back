@@ -31,7 +31,7 @@ class SemestreController extends Controller
         parent::sendJSONResponse($model->rows);
     }
 
-    public static function addUser()
+    public static function addSemestre()
     {
         $data = parent::receiveJSONRequest()[0];
 

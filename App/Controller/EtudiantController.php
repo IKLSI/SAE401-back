@@ -31,7 +31,7 @@ class EtudiantController extends Controller
         parent::sendJSONResponse($model->rows);
     }
 
-    public function addEtudiant($data)
+    public function addEtudiant()
     {
         $data = parent::receiveJSONRequest()[0];
 
@@ -57,5 +57,33 @@ class EtudiantController extends Controller
         
         // If everything is successful, return a success message or redirect to another page
         parent::sendJSONResponse("Etudiant added successfully!");
+    }
+
+    public function updateEtudiant()
+    {
+        $data = parent::receiveJSONRequest()[0];
+
+        try {
+            // Create a new EtudiantModel instance
+            $etudiant = new EtudiantModel();
+
+            // Assign data from the POST request to the EtudiantModel object
+            $etudiant->id_etu = $data['id_etu'];
+            $etudiant->nom_etu = $data['nom_etu'];
+            $etudiant->prenom_etu = $data['prenom_etu'];
+            $etudiant->groupe_TD = $data['groupe_TD'];
+            $etudiant->groupe_TP = $data['groupe_TP'];
+            $etudiant->cursus = $data['cursus'];
+            $etudiant->alternant = $data['alternant'];
+
+            // Call the insert method of EtudiantModel to insert the data into the database
+            $etudiant->update();
+        } catch (Exception $e) {
+            // Handle the exception (e.g., return an error response)
+            return "Error: " . $e->getMessage();
+        }
+        
+        // If everything is successful, return a success message or redirect to another page
+        parent::sendJSONResponse("Etudiant updated successfully!");
     }
 }

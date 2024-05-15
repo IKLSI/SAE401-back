@@ -31,7 +31,7 @@ class EtuSemestreController extends Controller
         parent::sendJSONResponse($model->rows);
     }
 
-    public static function addUser()
+    public static function addEtuSemestre()
     {
         $data = parent::receiveJSONRequest()[0];
 

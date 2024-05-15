@@ -70,4 +70,28 @@ class CoefficientDAO extends DAO
             throw $e;
         }
     }
+
+    public function update($id_coef, $coef)
+    {
+        try {
+            // Definition of the SQL query to insert a new record into the "Coefficient" table
+            $sql = "UPDATE Etudiant SET coef = :coef
+                    WHERE id_coef = :id_coef";
+
+            // Prepare SQL query using database connection
+            $stmt = $this->conn->prepare($sql);
+            
+            // Bind parameters
+            $stmt->bindValue(':id_coef', $id_coef);
+            $stmt->bindValue(':coef', $coef);
+
+            // Execute the prepared query
+            $stmt->execute();
+            return "Coefficient updated successfully!";
+
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
 }

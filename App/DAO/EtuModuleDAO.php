@@ -67,4 +67,27 @@ class EtuModuleDAO extends DAO
             throw $e;
         }
     }
+
+    public function update(int $id_etu, int $id_coef, float $note)
+    {
+        try {
+            $sql = "UPDATE EtuModule SET note = :note
+            WHERE id_etu = :id_etu AND id_coef=:id_coef";
+            
+            // Prepare SQL query using database connection
+            $stmt = $this->conn->prepare($sql);
+            
+            // Bind parameters
+			$stmt->bindValue(':id_etu', $id_etu);
+            $stmt->bindValue(':id_coef', $id_coef);
+            $stmt->bindValue(':note', $note);
+
+            // Execute the prepared query
+            $stmt->execute();
+            return "EtuModule updated successfully!";
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
 }
