@@ -96,18 +96,22 @@ class Router
 	public static function listen()
 	{
 		foreach (self::$routes as $route) {
-			$arr = explode("/", $route['uri']);
-			$lastPartUrlServer = $arr[array_key_last($arr)-1];
-
 			
-			echo self::getCurrentUri(). "\n";
-			echo $arr[array_key_last($arr)-1]. "\n"; 
-			if (self::isCurrentUri($route['uri'])) {
+			$isModifiedUrl = self::testSubstituteURL($route['uri'], self::getCurrentUri());
+			if (self::isCurrentUri($route['uri']) || $isModifiedUrl) {
+				
 				self::checkMethod($route['method']);
 				$cb = $route['callback'];
 
 				if (method_exists(...$cb)) {
-					$route['callback']();
+					if ($isModifiedUrl){
+						$arrRoute = explode("/", self::getCurrentUri());
+						$id = (int) $arrRoute[array_key_last($arrRoute)];
+						
+						$route['callback']($id);
+					} else {
+						$route['callback']();
+					}
 					continue;
 				}
 				self::handleServerError();
@@ -116,11 +120,18 @@ class Router
 
 		self::handleNotFound();
 	}
-	public function testSubstituteURL($urlServer, $urlClient) {
+	public static function testSubstituteURL($urlServer, $urlClient) {
 
 		/**
-		 * Function qui sert à regarder si le dernier élément du serveur est * et donc si cela peut être un id
+		 * Function qui sert à regarder si le dernier élément du serveur est * et donc si le n-1 est égal
 		 */
+		$arrRoute = explode("/", $urlServer);
+		$arrRouteActual = explode("/", $urlClient);
+		if ($arrRoute[array_key_last($arrRoute)] == "*" && $arrRouteActual[array_key_last($arrRouteActual)-1] == $arrRoute[array_key_last($arrRoute)-1]){
+			return true;
+		}
+		return false;
+		
 		
 	}
 }

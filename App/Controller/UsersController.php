@@ -19,8 +19,9 @@ class UsersController extends Controller
         // Sends the response in JSON format containing the records obtained
         parent::sendJSONResponse($model->rows);
     }
-    public static function show(): void
+    public static function show(int $id): void
     {
+		
         // Create a new UserModel instance to access the model layer
         //$model = new UsersModel();
         
@@ -28,6 +29,6 @@ class UsersController extends Controller
         //$model->get($id);
         $arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
         // Sends the response in JSON format containing the records obtained
-        //parent::sendJSONResponse($arr);
+        parent::sendJSONResponse($id);
     }
 }
