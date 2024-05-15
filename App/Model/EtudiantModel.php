@@ -37,4 +37,17 @@ class EtudiantModel extends Model
 			throw $e;
 		}
 	}
+
+    public function insert()
+    {
+        try {
+            // Create a new EtudiantDAO instance to access the data layer
+            $dao = new EtudiantDAO();
+            // Call the insert method of EtudiantDAO and pass this EtudiantModel instance
+            $dao->insert($this);
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
 }

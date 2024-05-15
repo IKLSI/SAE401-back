@@ -1,6 +1,8 @@
 <?php
 
 namespace App\DAO;
+use App\Model\EtudiantModel;
+use Exception;
 
 class EtudiantDAO extends DAO
 {
@@ -43,4 +45,33 @@ class EtudiantDAO extends DAO
 		// Returns all query results as class objects (based on DAO class)
 		return $stmt->fetchAll(DAO::FETCH_CLASS);
 	}
+
+	// Method to insert a new record into the Etudiant table
+    public function insert(EtudiantModel $etudiant)
+    {
+        try {
+            // Definition of the SQL query to insert a new record into the "Etudiant" table
+            $sql = "INSERT INTO Etudiant (code_etu, nom_etu, prenom_etu, groupe_TD, groupe_TP, cursus, alternant) 
+                    VALUES (:code_etu, :nom_etu, :prenom_etu, :groupe_TD, :groupe_TP, :cursus, :alternant)";
+            
+            // Prepare SQL query using database connection
+            $stmt = $this->conn->prepare($sql);
+            
+            // Bind parameters
+            $stmt->bindValue(':code_etu', $etudiant->code_etu);
+            $stmt->bindValue(':nom_etu', $etudiant->nom_etu);
+            $stmt->bindValue(':prenom_etu', $etudiant->prenom_etu);
+            $stmt->bindValue(':groupe_TD', $etudiant->groupe_TD);
+            $stmt->bindValue(':groupe_TP', $etudiant->groupe_TP);
+            $stmt->bindValue(':cursus', $etudiant->cursus);
+            $stmt->bindValue(':alternant', $etudiant->alternant);
+
+            // Execute the prepared query
+            $stmt->execute();
+
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
 }
