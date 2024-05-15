@@ -106,7 +106,7 @@ class Router
 				if (method_exists(...$cb)) {
 					if ($isModifiedUrl){
 						$arrRoute = explode("/", self::getCurrentUri());
-						$id = (int) $arrRoute[array_key_last($arrRoute)];
+						$id = (int) $arrRoute[sizeof($arrRoute)];
 						
 						$route['callback']($id);
 					} else {
@@ -123,11 +123,14 @@ class Router
 	public static function testSubstituteURL($urlServer, $urlClient) {
 
 		/**
-		 * Function qui sert à regarder si le dernier élément du serveur est * et donc si le n-1 est égal
+		 * Function qui sert à regarder si le dernier élément du serveur est * et donc si le n-1 est égal et si la taille des 2 urls
 		 */
 		$arrRoute = explode("/", $urlServer);
 		$arrRouteActual = explode("/", $urlClient);
-		if (($arrRoute[sizeof($arrRoute)-1] == "*") && ($arrRouteActual[array_key_last($arrRouteActual)-1] == $arrRoute[array_key_last($arrRoute)-1])){
+		if (($arrRoute[sizeof($arrRoute)-1] == "*") && 
+		($arrRouteActual[sizeof($arrRouteActual)-1] == $arrRoute[sizeof($arrRoute)-1]) &&
+		(sizeof($arrRoute) == sizeof($arrRouteActual))
+		){
 			return true;
 		}
 		return false;
