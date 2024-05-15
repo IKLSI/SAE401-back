@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\CompetenceModel;
+use Exception;
 
 class CompetenceController extends Controller
 {
@@ -28,5 +29,26 @@ class CompetenceController extends Controller
         
         // Sends the response in JSON format containing the records obtained
         parent::sendJSONResponse($model->rows);
+    }
+
+    public function addCompetence($data)
+    {
+        try {
+            // Create a new CompetenceModel instance
+            $comp = new CompetenceModel();
+
+            // Assign data from the POST request to the CompetenceModel object
+            $comp->id_semestre = $data['id_semestre'];
+            $comp->label = $data['label'];
+
+            // Call the insert method of CompetenceModel to insert the data into the database
+            $comp->insert();
+        } catch (Exception $e) {
+            // Handle the exception (e.g., return an error response)
+            return "Error: " . $e->getMessage();
+        }
+        
+        // If everything is successful, return a success message or redirect to another page
+        return "Competence added successfully!";
     }
 }

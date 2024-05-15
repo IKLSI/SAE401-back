@@ -1,6 +1,8 @@
 <?php
 
 namespace App\DAO;
+use Exception;
+use App\Model\AnneeModel;
 
 class AnneeDAO extends DAO
 {
@@ -43,4 +45,25 @@ class AnneeDAO extends DAO
 		// Returns all query results as class objects (based on DAO class)
 		return $stmt->fetchAll(DAO::FETCH_CLASS);
 	}
+
+    public function insert(AnneeModel $annee)
+    {
+        try {
+            // Definition of the SQL query to insert a new record into the "Annee" table
+            $sql = "INSERT INTO Annee (annee) VALUES (:annee)";
+            
+            // Prepare SQL query using database connection
+            $stmt = $this->conn->prepare($sql);
+            
+            // Bind parameters
+            $stmt->bindValue(':annee', $annee->annee);
+
+            // Execute the prepared query
+            $stmt->execute();
+
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
 }

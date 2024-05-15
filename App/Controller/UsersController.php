@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Model\UsersModel;
-;
+use Exception;
 
 class UsersController extends Controller
 {
@@ -30,8 +30,28 @@ class UsersController extends Controller
         // Sends the response in JSON format containing the records obtained
         parent::sendJSONResponse($model->rows);
     }
-	public static function addUser() {
-		$php = parent::receiveJSONRequest();	
-		parent::sendJSONResponse($php);
-	}
+
+    public function addUser()
+    {
+        $data = parent::receiveJSONRequest();
+
+        try {
+            // Create a new UsersModel instance
+            $user = new UsersModel();
+
+            // Assign data from the POST request to the UsersModel object
+            $user->login = $data['login'];
+            $user->password = $data['password'];
+            $user->isadmin = $data['isadmin'];
+
+            // Call the insert method of UsersModel to insert the data into the database
+            $user->insert();
+        } catch (Exception $e) {
+            // Handle the exception (e.g., return an error response)
+            return "Error: " . $e->getMessage();
+        }
+        
+        // If everything is successful, return a success message or redirect to another page
+        parent::sendJSONResponse("User added successfully!");
+    }
 }

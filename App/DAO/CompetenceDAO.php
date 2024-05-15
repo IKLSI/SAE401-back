@@ -1,6 +1,8 @@
 <?php
 
 namespace App\DAO;
+use Exception;
+use App\Model\CompetenceModel;
 
 class CompetenceDAO extends DAO
 {
@@ -43,4 +45,27 @@ class CompetenceDAO extends DAO
 		// Returns all query results as class objects (based on DAO class)
 		return $stmt->fetchAll(DAO::FETCH_CLASS);
 	}
+
+    // Method to insert a new record into the "Competence" table
+    public function insert(CompetenceModel $comp)
+    {
+        try {
+            // Definition of the SQL query to insert a new record into the "Competence" table
+            $sql = "INSERT INTO Competence (id_semestre, label) VALUES (:id_semestre, :label)";
+            
+            // Prepare SQL query using database connection
+            $stmt = $this->conn->prepare($sql);
+            
+            // Bind parameters
+            $stmt->bindValue(':id_semestre', $comp->id_semestre);
+            $stmt->bindValue(':label', $comp->label);
+
+            // Execute the prepared query
+            $stmt->execute();
+
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
 }

@@ -37,4 +37,18 @@ class CompetenceModel extends Model
 			throw $e;
 		}
 	}
+
+    // Method to insert a CompetenceModel record into the Competence table
+    public function insert()
+    {
+        try {
+            // Create a new CompetenceDAO instance to access the data layer
+            $dao = new CompetenceDAO();
+            // Call the insert method of CompetenceDAO and pass this CompetenceModel instance
+            $dao->insert($this);
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
 }

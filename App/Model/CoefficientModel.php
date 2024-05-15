@@ -37,4 +37,18 @@ class CoefficientModel extends Model
 			throw $e;
 		}
 	}
+
+    // Method to insert a CoefficientModel record into the Coefficient table
+    public function insert()
+    {
+        try {
+            // Create a new CoefficientDAO instance to access the data layer
+            $dao = new CoefficientDAO();
+            // Call the insert method of CoefficientDAO and pass this CoefficientModel instance
+            $dao->insert($this);
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
 }
