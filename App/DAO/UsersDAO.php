@@ -15,7 +15,7 @@ class UsersDAO extends DAO
     public function selectAll()
     {
         // Definition of the SQL query to select all records from the "User" table
-        $sql = "SELECT * FROM Utilisateurs";
+        $sql = "SELECT * FROM Utilisateur";
 
         // Prepare SQL query using database connection
         $stmt = $this->conn->prepare($sql);

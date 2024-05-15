@@ -19,7 +19,7 @@ class UsersModel extends Model
             $dao = new UsersDAO();
             // Call UserDAO selectAll() method to get all records
             // Results are stored in the $rows property
-            $this->rows = $dao->selectAll();
+            $dao->selectAll();
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
             throw $e;

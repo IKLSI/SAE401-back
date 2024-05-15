@@ -41,7 +41,7 @@ abstract class DAO extends PDO
 	protected function connect(): void
 	{
 		$dsn = sprintf(
-			"mysql:host=%s;dbname=%s;charset=utf8",
+			"pgsql:host=%s;dbname=%s",
 			$_ENV['DB_HOST'],
 			$_ENV['DB_NAME']
 		);
