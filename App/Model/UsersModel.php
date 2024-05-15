@@ -9,7 +9,7 @@ use Exception;
 class UsersModel extends Model
 {
     // Public attributes to represent the columns of the User table
-    public $id_user, $login_user, $password_user,$isadmin;
+    public $id, $login, $password,$isadmin;
 
     // Method to get all records from the User table
     public function getAll()

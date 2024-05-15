@@ -15,8 +15,7 @@ class UsersController extends Controller
         
         // Call UsersModel getAll() method to get all records
         $model->getAll();
-		print_r($model->rows);
-        $arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
+		
         // Sends the response in JSON format containing the records obtained
         parent::sendJSONResponse($model->rows);
     }
