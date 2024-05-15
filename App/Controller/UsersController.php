@@ -31,17 +31,18 @@ class UsersController extends Controller
         parent::sendJSONResponse($model->rows);
     }
 
-    public function addUser()
+    public static function addUser()
     {
-        $data = parent::receiveJSONRequest();
-
+        $data = parent::receiveJSONRequest()[0];
+		
+		
         try {
             // Create a new UsersModel instance
             $user = new UsersModel();
-
+			
             // Assign data from the POST request to the UsersModel object
-            $user->login = $data['login'];
-            $user->password = $data['password'];
+            $user->login = $data['login_user'];
+            $user->password = $data['password_user'];
             $user->isadmin = $data['isadmin'];
 
             // Call the insert method of UsersModel to insert the data into the database

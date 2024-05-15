@@ -46,26 +46,27 @@ class UsersDAO extends DAO
 		return $stmt->fetchAll(DAO::FETCH_CLASS);
 	}
 
-    public function insert(UsersModel $user)
+    public function insert(String $login, String $password, int $isadmin)
     {
         try {
             // Definition of the SQL query to insert a new record into the "Users" table
-            $sql = "INSERT INTO Users (login, password, isadmin) VALUES (:login, :password, :isadmin)";
+            $sql = "INSERT INTO Utilisateur (login_user, password_user, isadmin) VALUES (:login, :password, :isadmin)";
             
             // Prepare SQL query using database connection
             $stmt = $this->conn->prepare($sql);
             
             // Bind parameters
-            $stmt->bindValue(':password', $user->password);
-            $stmt->bindValue(':isadmin', $user->isadmin);
+			$stmt->bindValue(':login', $login);
+            $stmt->bindValue(':password', $password);
+            $stmt->bindValue(':isadmin', $isadmin);
 
             // Execute the prepared query
             $stmt->execute();
-
-            // Close the statement
-            $stmt->close();
+			echo "User added successfully!";
+            return "User added successfully!";
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
+			echo $e->getMessage();
             throw $e;
         }
     }
