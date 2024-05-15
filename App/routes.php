@@ -42,8 +42,11 @@ use App\Modules\Router;
  Router::request(HttpMethod::GET, "/api/etumodule", [EtuModuleController::class, "index"]);
  Router::request(HttpMethod::GET, "/api/etumodule/*", [EtuModuleController::class, "show"]);
 
- Router::request(HttpMethod::GET, "/api/users", [UsersController::class, "index"]);
- Router::request(HttpMethod::GET, "/api/users/*", [UsersController::class, "show"]);
+ Router::request(HttpMethod::GET, "/api/users", [UsersController::class, "getAll"]);
+ Router::request(HttpMethod::GET, "/api/users/*", [UsersController::class, "get"]);
+ Router::request(HttpMethod::POST, "/api/addUser", [UsersController::class, "addUser"]);
+ 
 
  Router::request(HttpMethod::GET, "/api/avis", [AvisController::class, "index"]);
  Router::request(HttpMethod::GET, "/api/avis/*", [AvisController::class, "show"]);
+ 

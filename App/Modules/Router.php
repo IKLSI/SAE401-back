@@ -27,6 +27,7 @@ class Router
 	private static function checkMethod(HttpMethod $method)
 	{
 		if ($_SERVER['REQUEST_METHOD'] !== $method->value) {
+			
 			Controller::sendJSONResponse([
 				"message" => "$method->value method is not allowed for this route."
 			], 405); // Method Not Allowed
