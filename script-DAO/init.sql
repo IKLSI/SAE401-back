@@ -1,14 +1,14 @@
-DROP TABLE EtuSemestre;
-DROP TABLE EtuComp;
-DROP TABLE EtuModule;
-DROP TABLE Avis;
-DROP TABLE Etudiant;
-DROP TABLE Semestre;
-DROP TABLE Annee;
-DROP TABLE Coefficient;
-DROP TABLE Competence;
-DROP TABLE Module;
-DROP TABLE Utilisateur;
+DROP TABLE IF EXISTS EtuSemestre CASCADE;
+DROP TABLE IF EXISTS EtuComp CASCADE;
+DROP TABLE IF EXISTS EtuModule CASCADE;
+DROP TABLE IF EXISTS Avis CASCADE;
+DROP TABLE IF EXISTS Etudiant CASCADE;
+DROP TABLE IF EXISTS Semestre CASCADE;
+DROP TABLE IF EXISTS Annee CASCADE;
+DROP TABLE IF EXISTS Coefficient CASCADE;
+DROP TABLE IF EXISTS Competence CASCADE;
+DROP TABLE IF EXISTS Module CASCADE;
+DROP TABLE IF EXISTS Utilisateur CASCADE;
 
 CREATE TABLE Etudiant
 (
@@ -23,19 +23,20 @@ CREATE TABLE Etudiant
     PRIMARY KEY (id_etu)
 );
 
-CREATE TABLE Semestre
-(
-    id_semestre int,
-    annee int,
-    PRIMARY KEY (id_semestre),
-    FOREIGN KEY (annee) REFERENCES Annee(annee)
-);
-
 CREATE TABLE Annee 
 (
     id_annee int,
-    annee int,
-    PRIMARY KEY (id_annee, annee)
+    annee VARCHAR(9),
+    PRIMARY KEY (id_annee)
+);
+
+CREATE TABLE Semestre
+(
+    id_semestre int,
+    label VARCHAR(12),
+    id_annee int,
+    PRIMARY KEY (id_semestre),
+    FOREIGN KEY (id_annee) REFERENCES Annee(id_annee)
 );
 
 CREATE TABLE Competence 
@@ -60,9 +61,9 @@ CREATE TABLE Coefficient
     id_comp int,
     id_module int,
     coef int,   
-    PRIMARY KEY (id_coef)
+    PRIMARY KEY (id_coef),
     FOREIGN KEY (id_comp) REFERENCES Competence(id_comp),
-    FOREIGN KEY (id_module) REFERENCES Modules(id_module)
+    FOREIGN KEY (id_module) REFERENCES Module(id_module)
 );
 
 CREATE TABLE EtuSemestre
@@ -95,7 +96,7 @@ CREATE TABLE EtuModule
     note float,
     PRIMARY KEY (id_etu, id_coef),
     FOREIGN KEY (id_etu) REFERENCES Etudiant(id_etu),
-    FOREIGN KEY (id_coef) REFERENCES Modules(id_coef)
+    FOREIGN KEY (id_coef) REFERENCES Coefficient(id_coef)
 );
 
 CREATE TABLE Avis 
@@ -116,3 +117,15 @@ CREATE TABLE Utilisateur
     isAdmin BOOLEAN,
     PRIMARY KEY (id_user)
 );
+
+INSERT INTO Etudiant VALUES (1, '221111', 'NOM', 'PRENOM', 'A', 'A2', 'S1 S2', false);
+INSERT INTO Annee  VALUES (1, '2022-2023');
+INSERT INTO Semestre VALUES (1, 'Semestre 1' ,1);
+INSERT INTO Competence  VALUES (1, 1, 'BIN1');
+INSERT INTO Module VALUES (1, 'BIN1.1');
+INSERT INTO Coefficient  VALUES (1, 1, 1, 12);
+INSERT INTO EtuSemestre VALUES (1, 1, 5, 2, 16.12);
+INSERT INTO EtuComp VALUES (1, 1, 15.15, 'ADM');
+INSERT INTO EtuModule VALUES (1, 1, 12.00);
+INSERT INTO Avis VALUES (1, 1, 'Passable', 'Passable');
+INSERT INTO Utilisateur VALUES (1, 'admin', 'admin', true);
