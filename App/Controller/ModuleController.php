@@ -18,4 +18,15 @@ class ModuleController extends Controller
         // Sends the response in JSON format containing the records obtained
         parent::sendJSONResponse($model->rows);
     }
+	public static function show(int $id): void
+    {
+		
+        // Create a new UserModel instance to access the model layer
+        $model = new ModuleModel();
+        // Call UsersModel getAll() method to get all records
+        $model->get($id);
+        
+        // Sends the response in JSON format containing the records obtained
+        parent::sendJSONResponse($model->rows);
+    }
 }

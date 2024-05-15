@@ -1,6 +1,7 @@
 <?php
 
 use App\Controller\AvisController;
+use App\Controller\ModuleController;
 use App\Controller\UsersController;
 use App\Modules\HttpMethod;
 use App\Modules\Router;
@@ -11,3 +12,6 @@ use App\Modules\Router;
 
  Router::request(HttpMethod::GET, "/api/avis", [AvisController::class, "index"]);
  Router::request(HttpMethod::GET, "/api/avis/*", [AvisController::class, "show"]);
+
+ Router::request(HttpMethod::GET, "/api/module", [ModuleController::class, "index"]);
+ Router::request(HttpMethod::GET, "/api/module/*", [ModuleController::class, "show"]);
