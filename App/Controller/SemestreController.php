@@ -53,4 +53,15 @@ class SemestreController extends Controller
         // If everything is successful, return a success message or redirect to another page
         parent::sendJSONResponse("SemestreModel added successfully!");
     }
+
+    public static function delete(int $id): void
+    {
+        // Create a new SemestreModel instance to access the model layer
+        $model = new SemestreModel();
+        // Call SemestreModel getAll() method to get all records
+        $model->delete($id);
+        
+        // Sends the response in JSON format containing the records obtained
+        parent::sendJSONResponse("SemestreModel removed successfully!");
+    }
 }

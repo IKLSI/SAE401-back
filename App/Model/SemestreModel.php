@@ -51,4 +51,18 @@ class SemestreModel extends Model
              throw $e;
          }
      }
+
+     public function delete(int $id)
+	{
+		try {
+			// Create a SemestreDAO instance to access the data layer
+			$dao = new SemestreDAO();
+			// Call SemestreDAO selectAll() method to get all records
+			// Results are stored in the $rows property
+			$this->rows = $dao->delete($id);
+		} catch (Exception $e) {
+			// Throws an exception in case of error during execution
+			throw $e;
+		}
+	}
 }

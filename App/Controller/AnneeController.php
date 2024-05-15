@@ -31,6 +31,7 @@ class AnneeController extends Controller
         parent::sendJSONResponse($model->rows);
     }
 
+
     public function addAnnee()
     {
         $data = parent::receiveJSONRequest()[0];
@@ -51,5 +52,17 @@ class AnneeController extends Controller
         
         // If everything is successful, return a success message or redirect to another page
         parent::sendJSONResponse("Annee added successfully!");
+    }
+
+    
+    public static function delete(int $id): void
+    {
+        // Create a new AnneeModel instance to access the model layer
+        $model = new AnneeModel();
+        // Call AnneeModel getAll() method to get all records
+        $model->delete($id);
+        
+        // Sends the response in JSON format containing the records obtained
+        parent::sendJSONResponse("Annee removed successfully!");
     }
 }

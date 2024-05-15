@@ -66,4 +66,22 @@ class SemestreDAO extends DAO
             throw $e;
         }
     }
+
+    public function delete(int $id)
+	{
+		// Definition of the SQL query to select all records from the "Semestre" table
+		$sql = "DELETE FROM Semestre WHERE id_semestre = :id";
+
+		// Prepare SQL query using database connection
+		$stmt = $this->conn->prepare($sql);
+
+		// Bind the parameter :id to the value $id
+		$stmt->bindValue(':id', $id);
+
+		// Execute the prepared query
+		$stmt->execute();
+
+		// Returns all query results as class objects (based on DAO class)
+		return $stmt->fetchAll("Semestre removed successfully!");
+	}
 }

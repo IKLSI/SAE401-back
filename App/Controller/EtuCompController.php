@@ -55,4 +55,15 @@ class EtuCompController extends Controller
         // If everything is successful, return a success message or redirect to another page
         parent::sendJSONResponse("EtuComp added successfully!");
     }
+
+    public static function delete(int $id): void
+    {
+        // Create a new EtuCompModel instance to access the model layer
+        $model = new EtuCompModel();
+        // Call EtuCompModel getAll() method to get all records
+        $model->delete($id);
+        
+        // Sends the response in JSON format containing the records obtained
+        parent::sendJSONResponse("EtuComp removed successfully!");
+    }
 }

@@ -86,4 +86,15 @@ class EtudiantController extends Controller
         // If everything is successful, return a success message or redirect to another page
         parent::sendJSONResponse("Etudiant updated successfully!");
     }
+
+    public static function delete(int $id): void
+    {
+        // Create a new EtudiantModel instance to access the model layer
+        $model = new EtudiantModel();
+        // Call EtudiantModel getAll() method to get all records
+        $model->delete($id);
+        
+        // Sends the response in JSON format containing the records obtained
+        parent::sendJSONResponse("Etudiant removed successfully!");
+    }
 }

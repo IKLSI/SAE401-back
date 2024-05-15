@@ -78,4 +78,15 @@ class EtuModuleController extends Controller
         // If everything is successful, return a success message or redirect to another page
         parent::sendJSONResponse("EtuModule updated successfully!");
     }
+
+    public static function delete(int $id): void
+    {
+        // Create a new EtuModuleModel instance to access the model layer
+        $model = new EtuModuleModel();
+        // Call EtuModuleModel getAll() method to get all records
+        $model->delete($id);
+        
+        // Sends the response in JSON format containing the records obtained
+        parent::sendJSONResponse("EtuModule removed successfully!");
+    }
 }

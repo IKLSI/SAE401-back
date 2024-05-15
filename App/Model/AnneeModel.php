@@ -51,5 +51,19 @@ class AnneeModel extends Model
         }
     }
 
+    public function delete(int $id)
+	{
+		try {
+			// Create a AnneeDAO instance to access the data layer
+			$dao = new AnneeDAO();
+			// Call AnneeDAO selectAll() method to get all records
+			// Results are stored in the $rows property
+			$this->rows = $dao->delete($id);
+		} catch (Exception $e) {
+			// Throws an exception in case of error during execution
+			throw $e;
+		}
+	}
+
     
 }

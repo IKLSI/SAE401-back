@@ -53,4 +53,15 @@ class CompetenceController extends Controller
         // If everything is successful, return a success message or redirect to another page
         parent::sendJSONResponse("Competence added successfully!");
     }
+
+    public static function delete(int $id): void
+    {
+        // Create a new CompetenceModel instance to access the model layer
+        $model = new CompetenceModel();
+        // Call CompetenceModel getAll() method to get all records
+        $model->delete($id);
+        
+        // Sends the response in JSON format containing the records obtained
+        parent::sendJSONResponse("Competence removed successfully!");
+    }
 }

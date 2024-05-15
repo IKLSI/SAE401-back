@@ -54,4 +54,16 @@ class UsersController extends Controller
         // If everything is successful, return a success message or redirect to another page
         parent::sendJSONResponse("User added successfully!");
     }
+
+    public static function delete(int $id): void
+    {
+		
+        // Create a new UserModel instance to access the model layer
+        $model = new UsersModel();
+        // Call UsersModel getAll() method to get all records
+        $model->delete($id);
+        
+        // Sends the response in JSON format containing the records obtained
+        parent::sendJSONResponse("User removed successfully!");
+    }
 }

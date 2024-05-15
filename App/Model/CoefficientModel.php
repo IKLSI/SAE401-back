@@ -65,4 +65,19 @@ class CoefficientModel extends Model
             throw $e;
         }
     }
+
+    public function delete(int $id)
+	{
+		try {
+			// Create a CoefficientDAO instance to access the data layer
+			$dao = new CoefficientDAO();
+			// Call CoefficientDAO selectAll() method to get all records
+			// Results are stored in the $rows property
+			$this->rows = $dao->delete($id);
+		} catch (Exception $e) {
+			// Throws an exception in case of error during execution
+			throw $e;
+		}
+	}
+    
 }

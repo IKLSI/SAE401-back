@@ -77,4 +77,15 @@ class CoefficientController extends Controller
         // If everything is successful, return a success message or redirect to another page
         parent::sendJSONResponse("Coefficient updated successfully!");
     }
+
+    public static function delete(int $id): void
+    {
+        // Create a new CoefficientModel instance to access the model layer
+        $model = new CoefficientModel();
+        // Call CoefficientModel getAll() method to get all records
+        $model->delete($id);
+        
+        // Sends the response in JSON format containing the records obtained
+        parent::sendJSONResponse("Coefficient removed successfully!");
+    }
 }
