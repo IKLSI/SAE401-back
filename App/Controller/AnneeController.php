@@ -2,17 +2,17 @@
 
 namespace App\Controller;
 
-use App\Model\AvisModel;
+use App\Model\AnneeModel;
 
-class AvisController extends Controller
+class AnneeController extends Controller
 {
     // Static method that will be executed when the corresponding route is accessed
     public static function index(): void
     {
-        // Create a new AvisModel instance to access the model layer
-        $model = new AvisModel();
+        // Create a new AnneeModel instance to access the model layer
+        $model = new AnneeModel();
         
-        // Call AvisModel getAll() method to get all records
+        // Call AnneeModel getAll() method to get all records
         $model->getAll();
         
         // Sends the response in JSON format containing the records obtained
@@ -21,9 +21,9 @@ class AvisController extends Controller
 
     public static function show(int $id): void
     {
-        // Create a new AvisModel instance to access the model layer
-        $model = new AvisModel();
-        // Call AvisModel getAll() method to get all records
+        // Create a new AnneeModel instance to access the model layer
+        $model = new AnneeModel();
+        // Call AnneeModel getAll() method to get all records
         $model->get($id);
         
         // Sends the response in JSON format containing the records obtained
