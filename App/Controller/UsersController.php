@@ -10,6 +10,7 @@ class UsersController extends Controller
     // Static method that will be executed when the corresponding route is accessed
     public static function getAll(): void
     {
+		
         // Create a new UserModel instance to access the model layer
         $model = new UsersModel();
         

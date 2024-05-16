@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-abstract class Controller
+abstract class  Controller
 {
 	// HTTP headers for JSON responses
 	const CONTENT_TYPE_JSON = "Content-Type: application/json; charset=UTF-8";
