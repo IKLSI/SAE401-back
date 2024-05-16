@@ -45,11 +45,11 @@ class EtuCompDAO extends DAO
 		return $stmt->fetchAll(DAO::FETCH_CLASS);
 	}
 
-    public function insert(int $id_etu, int $id_comp, float $moyenne_comp, String $passage)
+    public function insert(int $id_etu, int $id_comp, float $moyenne_comp, String $passage, float $bonus)
     {
         try {
             // Definition of the SQL query to insert a new record into the "Users" table
-            $sql = "INSERT INTO EtuComp (id_etu, id_comp, moyenne_comp, passage) VALUES (:id_etu, :id_comp, :moyenne_comp, :passage)";
+            $sql = "INSERT INTO EtuComp (id_etu, id_comp, moyenne_comp, passage, bonus) VALUES (:id_etu, :id_comp, :moyenne_comp, :passage, :bonus)";
             
             // Prepare SQL query using database connection
             $stmt = $this->conn->prepare($sql);
@@ -59,6 +59,7 @@ class EtuCompDAO extends DAO
             $stmt->bindValue(':id_comp', $id_comp);
             $stmt->bindValue(':moyenne_comp', $moyenne_comp);
             $stmt->bindValue(':passage', $passage);
+            $stmt->bindValue(':bonus', $bonus);
 
 
             // Execute the prepared query

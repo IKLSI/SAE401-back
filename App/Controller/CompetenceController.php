@@ -31,7 +31,7 @@ class CompetenceController extends Controller
         parent::sendJSONResponse($model->rows);
     }
 
-    public function addCompetence()
+    public static function addCompetence()
     {
         $data = parent::receiveJSONRequest()[0];
 

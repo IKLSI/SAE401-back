@@ -32,7 +32,7 @@ class AnneeController extends Controller
     }
 
 
-    public function addAnnee()
+    public static function addAnnee()
     {
         $data = parent::receiveJSONRequest()[0];
 

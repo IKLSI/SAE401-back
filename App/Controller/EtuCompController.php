@@ -44,6 +44,7 @@ class EtuCompController extends Controller
             $user->id_comp = $data['id_comp'];
             $user->moyenne_comp = $data['moyenne_comp'];
             $user->passage = $data['passage'];
+            $user->bonus = $data['bonus'];
 
             // Call the insert method of UsersModel to insert the data into the database
             $user->insert();

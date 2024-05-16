@@ -31,7 +31,7 @@ class EtudiantController extends Controller
         parent::sendJSONResponse($model->rows);
     }
 
-    public function addEtudiant()
+    public static function addEtudiant()
     {
         $data = parent::receiveJSONRequest()[0];
 
@@ -59,7 +59,7 @@ class EtudiantController extends Controller
         parent::sendJSONResponse("Etudiant added successfully!");
     }
 
-    public function updateEtudiant()
+    public static function updateEtudiant()
     {
         $data = parent::receiveJSONRequest()[0];
 

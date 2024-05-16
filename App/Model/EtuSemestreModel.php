@@ -8,7 +8,7 @@ use Exception;
 class EtuSemestreModel extends Model
 {
     // Public attributes to represent the columns of the Avis table
-    public $id_etu, $id_semestre, $absences, $rang, $moyenne;
+    public $id_etu, $id_semestre, $absences, $rang, $moyenne, $validation;
 
     // Method to get all records from the User table
     public function getAll()
@@ -45,7 +45,7 @@ class EtuSemestreModel extends Model
              // Create a new EtuSemestreDAO instance to access the data layer
              $dao = new EtuSemestreDAO();
              // Call the insert method of EtuSemestreDAO and pass this EtuSemestreDAO instance
-             $dao->insert($this->id_etu, $this->id_semestre,$this->absences, $this->rang, $this->moyenne);
+             $dao->insert($this->id_etu, $this->id_semestre,$this->absences, $this->rang, $this->moyenne, $this->validation);
          } catch (Exception $e) {
              // Throws an exception in case of error during execution
              throw $e;

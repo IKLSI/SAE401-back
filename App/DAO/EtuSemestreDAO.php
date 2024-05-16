@@ -45,11 +45,11 @@ class EtuSemestreDAO extends DAO
 		return $stmt->fetchAll(DAO::FETCH_CLASS);
 	}
 
-    public function insert(int $id_etu, int $id_semestre, int $absences, int $rang, float $moyenne)
+    public function insert(int $id_etu, int $id_semestre, int $absences, int $rang, float $moyenne, String $validation)
     {
         try {
             // Definition of the SQL query to insert a new record into the "Users" table
-            $sql = "INSERT INTO EtuSemestre (id_etu, id_semestre, absences, rang, moyenne) VALUES (:id_etu, :id_semestre, :absences, :rang, :moyenne)";
+            $sql = "INSERT INTO EtuSemestre (id_etu, id_semestre, absences, rang, moyenne, validation) VALUES (:id_etu, :id_semestre, :absences, :rang, :moyenne, :validation)";
             
             // Prepare SQL query using database connection
             $stmt = $this->conn->prepare($sql);
@@ -60,6 +60,7 @@ class EtuSemestreDAO extends DAO
             $stmt->bindValue(':absences', $absences);
             $stmt->bindValue(':rang', $rang);
             $stmt->bindValue(':moyenne', $moyenne);
+            $stmt->bindValue(':validation', $validation);
 
             // Execute the prepared query
             $stmt->execute();

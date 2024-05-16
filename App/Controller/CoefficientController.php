@@ -31,7 +31,7 @@ class CoefficientController extends Controller
         parent::sendJSONResponse($model->rows);
     }
 
-    public function addCoefficient()
+    public static function addCoefficient()
     {
         $data = parent::receiveJSONRequest()[0];
 
@@ -55,7 +55,7 @@ class CoefficientController extends Controller
         parent::sendJSONResponse("Coefficient added successfully!");
     }
 
-    public function updateCoefficient()
+    public static function updateCoefficient()
     {
         $data = parent::receiveJSONRequest()[0];
 

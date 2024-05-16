@@ -73,6 +73,7 @@ CREATE TABLE EtuSemestre
     absences int,
     rang int,
     moyenne float,
+    validation VARCHAR(5),
     PRIMARY KEY (id_etu, id_semestre),
     FOREIGN KEY (id_etu) REFERENCES Etudiant(id_etu),
     FOREIGN KEY (id_semestre) REFERENCES Semestre(id_semestre)
@@ -84,6 +85,7 @@ CREATE TABLE EtuComp
     id_comp int,
     moyenne_comp float,
     passage VARCHAR(10),
+    bonus float,
     PRIMARY KEY (id_etu, id_comp),
     FOREIGN KEY (id_etu) REFERENCES Etudiant(id_etu),
     FOREIGN KEY (id_comp) REFERENCES Competence(id_comp)

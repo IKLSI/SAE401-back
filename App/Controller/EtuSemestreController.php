@@ -45,6 +45,7 @@ class EtuSemestreController extends Controller
             $user->absences = $data['absences'];
             $user->rang = $data['rang'];
             $user->moyenne = $data['moyenne'];
+            $user->validation = $data['validation'];
 
             // Call the insert method of EtuSemestreModel to insert the data into the database
             $user->insert();
