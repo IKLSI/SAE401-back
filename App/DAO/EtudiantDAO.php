@@ -53,7 +53,7 @@ class EtudiantDAO extends DAO
             // Definition of the SQL query to insert a new record into the "Etudiant" table
             $sql = "INSERT INTO Etudiant (code_etu, nom_etu, prenom_etu, groupe_TD, groupe_TP, cursus, alternant) 
                     VALUES (:code_etu, :nom_etu, :prenom_etu, :groupe_TD, :groupe_TP, :cursus, :alternant)";
-            
+
             // Prepare SQL query using database connection
             $stmt = $this->conn->prepare($sql);
             

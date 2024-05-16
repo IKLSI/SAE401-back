@@ -34,6 +34,7 @@ use App\Modules\Router;
  Router::request(HttpMethod::GET, "/api/competence", [CompetenceController::class, "index"]);
  Router::request(HttpMethod::GET, "/api/competence/*", [CompetenceController::class, "show"]);
  Router::request(HttpMethod::POST, "/api/addCompetence", [CompetenceController::class, "addCompetence"]);
+ Router::request(HttpMethod::OPTIONS, "/api/addCompetence", [CompetenceController::class, "options"]);
  Router::request(HttpMethod::DELETE, "/api/deleteCompetence/*", [CompetenceController::class, "delete"]);
 
  Router::request(HttpMethod::GET, "/api/module", [ModuleController::class, "index"]);

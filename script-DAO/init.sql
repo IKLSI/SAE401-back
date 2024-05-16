@@ -120,6 +120,18 @@ CREATE TABLE Utilisateur
     PRIMARY KEY (id_user)
 );
 
+CREATE TABlE Fichier
+(
+    id_fichier SERIAL,
+    nom_fichier TEXT,
+    type VARCHAR(15),
+    id_annee int,
+    id_semestre int,
+    PRIMARY KEY (id_fichier),
+    FOREIGN KEY (id_annee) REFERENCES Annee(id_annee),
+    FOREIGN KEY (id_semestre) REFERENCES Semestre(id_semestre)
+);
+
 INSERT INTO Etudiant (code_etu, nom_etu, prenom_etu, groupe_TD, groupe_TP, cursus, alternant) VALUES ('221111', 'NOM', 'PRENOM', 'A', 'A2', 'S1 S2', false);
 INSERT INTO Annee (annee) VALUES ('2022-2023');
 INSERT INTO Semestre (label, id_annee) VALUES ('Semestre 1' ,1);

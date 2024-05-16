@@ -38,7 +38,7 @@ class EtudiantController extends Controller
         try {
             // Create a new EtudiantModel instance
             $etudiant = new EtudiantModel();
-
+            
             // Assign data from the POST request to the EtudiantModel object
             $etudiant->code_etu = $data['code_etu'];
             $etudiant->nom_etu = $data['nom_etu'];
