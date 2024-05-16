@@ -17,7 +17,7 @@ class AnneeDAO extends DAO
     public function selectAll()
     {
         // Definition of the SQL query to select all records from the "Annee" table
-        $sql = "SELECT * FROM Annee";
+        $sql = "SELECT * FROM annee";
 
         // Prepare SQL query using database connection
         $stmt = $this->conn->prepare($sql);

@@ -34,7 +34,9 @@ class AnneeController extends Controller
 
     public static function addAnnee()
     {
+		
         $data = parent::receiveJSONRequest()[0];
+		
 
         try {
             // Create a new AnneeModel instance
