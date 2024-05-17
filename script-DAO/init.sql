@@ -106,8 +106,9 @@ CREATE TABLE Avis
 (
     id_avis SERIAL,
     id_etu int,
-    avis_master TEXT,
-    avis_inge TEXT,
+    avis_master VARCHAR(20),
+    avis_inge VARCHAR(20),
+    commentaire TEXT,
     PRIMARY KEY (id_avis),
     FOREIGN KEY (id_etu) REFERENCES Etudiant(id_etu)
 );

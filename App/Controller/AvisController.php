@@ -43,6 +43,7 @@ class AvisController extends Controller
             $avis->id_etu = $data['id_etu'];
             $avis->avis_master = $data['avis_master'];
             $avis->avis_inge = $data['avis_inge'];
+            $avis->commentaire = $data['commentaire'];
 
             // Call the insert method of AvisModel to insert the data into the database
             $avis->insert();
@@ -66,6 +67,7 @@ class AvisController extends Controller
             $avis->id_avis = $data['id_avis'];
             $avis->avis_master = $data['avis_master'];
             $avis->avis_inge = $data['avis_inge'];
+            $avis->commentaire = $data['commentaire'];
 
             // Call the update method of AvisModel to insert the data into the database
             $avis->update();
