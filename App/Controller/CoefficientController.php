@@ -45,7 +45,7 @@ class CoefficientController extends Controller
             $coef->coef = $data['coef'];
 
             // Call the insert method of CoefficientModel to insert the data into the database
-            $coef->insert();
+            $coef->insert();    
         } catch (Exception $e) {
             // Handle the exception (e.g., return an error response)
             return "Error: " . $e->getMessage();

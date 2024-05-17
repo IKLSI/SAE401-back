@@ -31,10 +31,21 @@ class EtudiantController extends Controller
         parent::sendJSONResponse($model->rows);
     }
 
+    public static function getEtudiantByCode(int $id): void
+    {
+        // Create a new EtudiantModel instance to access the model layer
+        $model = new EtudiantModel();
+        // Call EtudiantModel getAll() method to get all records
+        $model->getEtudiantByCode($id);
+        
+        // Sends the response in JSON format containing the records obtained
+        parent::sendJSONResponse($model->rows);
+    }
+
     public static function addEtudiant()
     {
         $data = parent::receiveJSONRequest()[0];
-
+        print_r($data);
         try {
             // Create a new EtudiantModel instance
             $etudiant = new EtudiantModel();

@@ -46,6 +46,24 @@ class EtudiantDAO extends DAO
 		return $stmt->fetchAll(DAO::FETCH_CLASS);
 	}
 
+    public function selectByCode(int $id)
+	{
+		// Definition of the SQL query to select all records from the "Etudiant" table
+		$sql = "SELECT * FROM Etudiant WHERE code_etu = :id";
+
+		// Prepare SQL query using database connection
+		$stmt = $this->conn->prepare($sql);
+
+		// Bind the parameter :id to the value $id
+		$stmt->bindValue(':id', $id);
+
+		// Execute the prepared query
+		$stmt->execute();
+
+		// Returns all query results as class objects (based on DAO class)
+		return $stmt->fetchAll(DAO::FETCH_CLASS);
+	}
+
 	// Method to insert a new record into the Etudiant table
     public function insert(String $code_etu, String $nom_etu, String $prenom_etu, String $groupe_TD, String $groupe_TP, String $cursus, $alternant)
     {

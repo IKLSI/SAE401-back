@@ -8,7 +8,7 @@ use Exception;
 class AvisModel extends Model
 {
     // Public attributes to represent the columns of the Avis table
-    public $id_avis, $id_etu, $avis_master, $avis_inge;
+    public $id_avis, $id_etu, $avis_master, $avis_inge, $commentaire;
 
     // Method to get all records from the User table
     public function getAll()
@@ -45,7 +45,20 @@ class AvisModel extends Model
             // Create a new AvisDAO instance to access the data layer
             $dao = new AvisDAO();
             // Call the insert method of AvisDAO and pass this AvisModel instance
-            $dao->insert($this->id_avis, $this->avis_master, $this->avis_inge);
+            $dao->insert($this->id_etu, $this->avis_master, $this->avis_inge, $this->commentaire);
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
+
+    public function update()
+    {
+        try {
+            // Create a new AvisDAO instance to access the data layer
+            $dao = new AvisDAO();
+            // Call the insert method of AvisDAO and pass this AvisModel instance
+            $dao->update($this->id_etu, $this->avis_master, $this->avis_inge, $this->commentaire);
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
             throw $e;

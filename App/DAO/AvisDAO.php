@@ -46,11 +46,11 @@ class AvisDAO extends DAO
 		return $stmt->fetchAll(DAO::FETCH_CLASS);
 	}
 
-    public function insert(int $id_etu, String $avis_master, String $avis_inge)
+    public function insert(int $id_etu, String $avis_master, String $avis_inge, String $commentaire)
     {
         try {
             // Definition of the SQL query to insert a new record into the "Avis" table
-            $sql = "INSERT INTO Avis (id_etu, avis_master, avis_inge) VALUES (:id_etu, :avis_master, :avis_inge)";
+            $sql = "INSERT INTO Avis (id_etu, avis_master, avis_inge, commentaire) VALUES (:id_etu, :avis_master, :avis_inge, :commentaire)";
             
             // Prepare SQL query using database connection
             $stmt = $this->conn->prepare($sql);
@@ -59,10 +59,35 @@ class AvisDAO extends DAO
             $stmt->bindValue(':id_etu', $id_etu);
             $stmt->bindValue(':avis_master', $avis_master);
             $stmt->bindValue(':avis_inge', $avis_inge);
+            $stmt->bindValue(':commentaire', $commentaire);
 
             // Execute the prepared query
             $stmt->execute();
             return "Avis added successfully!";
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
+
+    public function update(int $id_etu, String $avis_master, String $avis_inge, String $commentaire)
+    {
+        try {
+            // Definition of the SQL query to insert a new record into the "Avis" table
+            $sql = "UPDATE Avis SET avis_master = :avis_master, avis_inge = :avis_inge, commentaire = :commentaire WHERE id_etu = :id_etu";
+            
+            // Prepare SQL query using database connection
+            $stmt = $this->conn->prepare($sql);
+            
+            // Bind parameters
+            $stmt->bindValue(':id_etu', $id_etu);
+            $stmt->bindValue(':avis_master', $avis_master);
+            $stmt->bindValue(':avis_inge', $avis_inge);
+            $stmt->bindValue(':commentaire', $commentaire);
+
+            // Execute the prepared query
+            $stmt->execute();
+            return "Avis updated successfully!";
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
             throw $e;

@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS Coefficient CASCADE;
 DROP TABLE IF EXISTS Competence CASCADE;
 DROP TABLE IF EXISTS Module CASCADE;
 DROP TABLE IF EXISTS Utilisateur CASCADE;
+DROP TABLE IF EXISTS Fichier CASCADE;
 
 CREATE TABLE Etudiant
 (
@@ -105,8 +106,9 @@ CREATE TABLE Avis
 (
     id_avis SERIAL,
     id_etu int,
-    avis_master TEXT,
-    avis_inge TEXT,
+    avis_master VARCHAR(20),
+    avis_inge VARCHAR(20),
+    commentaire TEXT,
     PRIMARY KEY (id_avis),
     FOREIGN KEY (id_etu) REFERENCES Etudiant(id_etu)
 );
@@ -141,5 +143,5 @@ INSERT INTO Coefficient (id_comp, id_module, coef) VALUES (1, 1, 12);
 INSERT INTO EtuSemestre VALUES (1, 1, 5, 2, 16.12);
 INSERT INTO EtuComp VALUES (1, 1, 15.15, 'ADM');
 INSERT INTO EtuModule VALUES (1, 1, 12.00);
-INSERT INTO Avis (id_etu, avis_master, avis_inge) VALUES (1, 'Passable', 'Passable');
+INSERT INTO Avis (id_etu, avis_master, avis_inge) VALUES (1, 'Favorable', 'Réservé');
 INSERT INTO Utilisateur (login_user, password_user, isAdmin) VALUES ('admin', 'admin', true);

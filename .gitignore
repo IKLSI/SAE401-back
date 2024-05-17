@@ -2,3 +2,5 @@ composer.phar
 /vendor/
 
 .env
+
+.DS_Store
