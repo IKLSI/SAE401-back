@@ -67,14 +67,17 @@ class UsersModel extends Model
 			throw $e;
 		}
 	}
-	public function verifyUser($login,$password)
+	public function verifyUser()
 	{
+		$login = $_SERVER['PHP_AUTH_USER'];
+		$password = $_SERVER['PHP_AUTH_PW'];
 		try {
 			// Create a UserDAO instance to access the data layer
 			$dao = new UsersDAO();
 			// Call UserDAO selectAll() method to get all records
 			// Results are stored in the $rows property
 			$this->rows = $dao->verifyUser($login,$password);
+
 		} catch (Exception $e) {
 			// Throws an exception in case of error during execution
 			throw $e;

@@ -27,9 +27,14 @@ class Router
 	private static function checkMethod(HttpMethod $method)
 	{
 		if ($_SERVER['REQUEST_METHOD'] !== $method->value) {
-			
+			if ($_SERVER['REQUEST_METHOD'] === "OPTIONS") {
+				Controller::sendJSONResponse([
+					"message" => "Request method is allowed for this route."
+				], 200); // OK
+				exit;
+			}
 			Controller::sendJSONResponse([
-				"message" => "$method->value method is not allowed for this route."
+				"message" => "{$_SERVER['REQUEST_METHOD']} method is not allowed for this route."
 			], 405); // Method Not Allowed
 			exit;
 		}
@@ -110,7 +115,6 @@ class Router
 						$id = (int) $arrRoute[count($arrRoute)-1];
 						$route['callback']($id);
 					} else {
-						
 						$route['callback']();
 					}
 					continue;

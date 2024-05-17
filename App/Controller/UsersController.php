@@ -17,8 +17,8 @@ class UsersController extends Controller
         // Call UsersModel getAll() method to get all records
         $model->getAll();
 		
-        // Sends the response in JSON format containing the records obtained
-        parent::sendJSONResponse($model->rows);
+
+        
     }
     public static function get(int $id): void
     {
@@ -68,14 +68,12 @@ class UsersController extends Controller
         parent::sendJSONResponse("User removed successfully!");
     }
 	public static function verifyUser() {
-		$data = parent::receiveJSONRequest()[0];
-		$login = $data['login'];
-		$password = $data['password'];
+		// basic auth
 		$model = new UsersModel();
-		$model->verifyUser($login, $password);
+		$model->verifyUser();
 		if ($model->rows == []) {
 			parent::sendJSONResponse(array('error' => "Invalid login or password"));
 		}
-		parent::sendJSONResponse($model->rows);
+		parent::sendJSONResponse(array('token' => base64_encode($model->rows[0]->login_user . ':' . $model->rows[0]->password_user)));
 	}
 }
