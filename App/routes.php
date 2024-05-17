@@ -17,6 +17,7 @@ use App\Modules\Router;
 // Router::request(HttpMethod::GET, "/path", [YourController::class, "someMethod"]);
  Router::request(HttpMethod::GET, "/api/etudiant", [EtudiantController::class, "index"]);
  Router::request(HttpMethod::GET, "/api/etudiant/*", [EtudiantController::class, "show"]);
+ Router::request(HttpMethod::GET, "/api/etudiantCode/*", [EtudiantController::class, "getEtudiantByCode"]);
  Router::request(HttpMethod::POST, "/api/addEtudiant", [EtudiantController::class, "addEtudiant"]);
  Router::request(HttpMethod::PUT, "/api/updateEtudiant", [EtudiantController::class, "updateEtudiant"]);
  Router::request(HttpMethod::DELETE, "/api/deleteEtudiant/*", [EtudiantController::class, "delete"]);

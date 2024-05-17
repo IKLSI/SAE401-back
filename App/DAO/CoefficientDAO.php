@@ -52,7 +52,7 @@ class CoefficientDAO extends DAO
         try {
             // Definition of the SQL query to insert a new record into the "Coefficient" table
             $sql = "INSERT INTO Coefficient (id_comp, id_module, coef) VALUES (:id_comp, :id_module, :coef)";
-            
+
             // Prepare SQL query using database connection
             $stmt = $this->conn->prepare($sql);
             
@@ -60,7 +60,6 @@ class CoefficientDAO extends DAO
             $stmt->bindValue(':id_comp', $id_comp);
             $stmt->bindValue(':id_module', $id_module);
             $stmt->bindValue(':coef', $coef);
-
             // Execute the prepared query
             $stmt->execute();
             return "Coefficient added successfully!";

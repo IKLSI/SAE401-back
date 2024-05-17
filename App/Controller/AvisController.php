@@ -55,6 +55,29 @@ class AvisController extends Controller
         parent::sendJSONResponse("Avis added successfully!");
     }
 
+    public static function updateAvis()
+    {
+        $data = parent::receiveJSONRequest()[0];
+        try {
+            // Create a new AvisModel instance
+            $avis = new AvisModel();
+
+            // Assign data from the POST request to the AvisModel object
+            $avis->id_avis = $data['id_avis'];
+            $avis->avis_master = $data['avis_master'];
+            $avis->avis_inge = $data['avis_inge'];
+
+            // Call the update method of AvisModel to insert the data into the database
+            $avis->update();
+        } catch (Exception $e) {
+            // Handle the exception (e.g., return an error response)
+            return "Error: " . $e->getMessage();
+        }
+        
+        // If everything is successful, return a success message or redirect to another page
+        parent::sendJSONResponse("Avis added successfully!");
+    }
+
     public static function delete(int $id): void
     {
         // Create a new AvisModel instance to access the model layer

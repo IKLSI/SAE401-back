@@ -69,6 +69,29 @@ class AvisDAO extends DAO
         }
     }
 
+    public function update(int $id_avis, String $avis_master, String $avis_inge)
+    {
+        try {
+            // Definition of the SQL query to insert a new record into the "Avis" table
+            $sql = "UPDATE Avis SET avis_master = :avis_master, avis_inge = :avis_inge WHERE id_avis = :id_avis";
+            
+            // Prepare SQL query using database connection
+            $stmt = $this->conn->prepare($sql);
+            
+            // Bind parameters
+            $stmt->bindValue(':id_avis', $id_avis);
+            $stmt->bindValue(':avis_master', $avis_master);
+            $stmt->bindValue(':avis_inge', $avis_inge);
+
+            // Execute the prepared query
+            $stmt->execute();
+            return "Avis updated successfully!";
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
+
     public function delete(int $id)
 	{
 		// Definition of the SQL query to select all records from the "Avis" table
