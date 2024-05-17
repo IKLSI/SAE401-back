@@ -143,5 +143,5 @@ INSERT INTO Coefficient (id_comp, id_module, coef) VALUES (1, 1, 12);
 INSERT INTO EtuSemestre VALUES (1, 1, 5, 2, 16.12);
 INSERT INTO EtuComp VALUES (1, 1, 15.15, 'ADM');
 INSERT INTO EtuModule VALUES (1, 1, 12.00);
-INSERT INTO Avis (id_etu, avis_master, avis_inge) VALUES (1, 'Passable', 'Passable');
+INSERT INTO Avis (id_etu, avis_master, avis_inge) VALUES (1, 'Favorable', 'Réservé');
 INSERT INTO Utilisateur (login_user, password_user, isAdmin) VALUES ('admin', 'admin', true);
