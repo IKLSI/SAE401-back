@@ -70,17 +70,17 @@ class AvisDAO extends DAO
         }
     }
 
-    public function update(int $id_avis, String $avis_master, String $avis_inge, String $commentaire)
+    public function update(int $id_etu, String $avis_master, String $avis_inge, String $commentaire)
     {
         try {
             // Definition of the SQL query to insert a new record into the "Avis" table
-            $sql = "UPDATE Avis SET avis_master = :avis_master, avis_inge = :avis_inge, commentaire = :commentaire WHERE id_avis = :id_avis";
+            $sql = "UPDATE Avis SET avis_master = :avis_master, avis_inge = :avis_inge, commentaire = :commentaire WHERE id_etu = :id_etu";
             
             // Prepare SQL query using database connection
             $stmt = $this->conn->prepare($sql);
             
             // Bind parameters
-            $stmt->bindValue(':id_avis', $id_avis);
+            $stmt->bindValue(':id_etu', $id_etu);
             $stmt->bindValue(':avis_master', $avis_master);
             $stmt->bindValue(':avis_inge', $avis_inge);
             $stmt->bindValue(':commentaire', $commentaire);

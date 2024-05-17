@@ -58,7 +58,7 @@ class AvisModel extends Model
             // Create a new AvisDAO instance to access the data layer
             $dao = new AvisDAO();
             // Call the insert method of AvisDAO and pass this AvisModel instance
-            $dao->update($this->id_avis, $this->avis_master, $this->avis_inge, $this->commentaire);
+            $dao->update($this->id_etu, $this->avis_master, $this->avis_inge, $this->commentaire);
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
             throw $e;

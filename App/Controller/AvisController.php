@@ -64,7 +64,7 @@ class AvisController extends Controller
             $avis = new AvisModel();
 
             // Assign data from the POST request to the AvisModel object
-            $avis->id_avis = $data['id_avis'];
+            $avis->id_etu = $data['id_etu'];
             $avis->avis_master = $data['avis_master'];
             $avis->avis_inge = $data['avis_inge'];
             $avis->commentaire = $data['commentaire'];
