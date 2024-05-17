@@ -68,7 +68,8 @@ use App\Modules\Router;
  Router::request(HttpMethod::GET, "/api/users/*", [UsersController::class, "get"]);
  Router::request(HttpMethod::POST, "/api/addUser", [UsersController::class, "addUser"]);
  Router::request(HttpMethod::DELETE, "/api/deleteUser/*", [UsersController::class, "delete"]);
- Router::request(HttpMethod::GET, "/api/verifyUser", [UsersController::class, "verifyUser"]);
+ Router::request(HttpMethod::POST, "/api/verifyUser", [UsersController::class, "verifyUser"]);
+ //Router::request(HttpMethod::OPTIONS, "/api/verifyUser", [UsersController::class, "verifyUser"]);
 
  Router::request(HttpMethod::GET, "/api/avis", [AvisController::class, "index"]);
  Router::request(HttpMethod::GET, "/api/avis/*", [AvisController::class, "show"]);

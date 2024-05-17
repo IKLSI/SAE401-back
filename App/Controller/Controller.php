@@ -6,10 +6,12 @@ abstract class  Controller
 {
 	// HTTP headers for JSON responses
 	const CONTENT_TYPE_JSON = "Content-Type: application/json; charset=UTF-8";
-	const ACCESS_CONTROL_ALLOW_ORIGIN = "Access-Control-Allow-Origin: *";
+	const ACCESS_CONTROL_ALLOW_ORIGIN = "Access-Control-Allow-Origin: http://localhost:8081";
 	const CACHE_CONTROL_NO_CACHE = "Cache-Control: no-cache, must-revalidate";
 	const EXPIRES_HEADER = "Expires: Mon, 26 Jul 1997 05:00:00 GMT"; // Expired date for immediate expiry
 	const PRAGMA_NO_CACHE = "Pragma: no-cache"; // No-cache policy
+	const Access_Control_Allow_Credentials = "Access-Control-Allow-Credentials: true";
+	const ACCES_CONTROL_ALLOW_HEADERS = "Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With";
 
 	/**
 	 * Sends a JSON response with the provided data.
@@ -30,7 +32,6 @@ abstract class  Controller
         // Get the raw data from the request
         $jsonData = file_get_contents('php://input');
         // Decode the JSON data and return an associative array
-		self::sendJSONResponse($jsonData, 200);
         return json_decode($jsonData, true);
     }
 
@@ -47,5 +48,8 @@ abstract class  Controller
 		header(self::CACHE_CONTROL_NO_CACHE);
 		header(self::EXPIRES_HEADER);
 		header(self::PRAGMA_NO_CACHE);
+		header(self::Access_Control_Allow_Credentials);
+		header(self::ACCES_CONTROL_ALLOW_HEADERS);
 	}
+	
 }
