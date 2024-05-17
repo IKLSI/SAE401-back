@@ -6,7 +6,6 @@ use App\Controller\CoefficientController;
 use App\Controller\CompetenceController;
 use App\Controller\EtuCompController;
 use App\Controller\EtudiantController;
-use App\Controller\FichierController;
 use App\Controller\EtuModuleController;
 use App\Controller\EtuSemestreController;
 use App\Controller\ModuleController;
