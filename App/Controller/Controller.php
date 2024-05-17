@@ -30,7 +30,6 @@ abstract class  Controller
         // Get the raw data from the request
         $jsonData = file_get_contents('php://input');
         // Decode the JSON data and return an associative array
-		self::sendJSONResponse($jsonData, 200);
         return json_decode($jsonData, true);
     }
 

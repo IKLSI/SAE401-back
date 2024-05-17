@@ -58,6 +58,7 @@ class AvisController extends Controller
 
     public static function updateAvis()
     {
+        
         $data = parent::receiveJSONRequest()[0];
         try {
             // Create a new AvisModel instance

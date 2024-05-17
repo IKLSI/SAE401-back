@@ -74,4 +74,5 @@ use App\Modules\Router;
  Router::request(HttpMethod::GET, "/api/avis", [AvisController::class, "index"]);
  Router::request(HttpMethod::GET, "/api/avis/*", [AvisController::class, "show"]);
  Router::request(HttpMethod::POST, "/api/addAvis", [AvisController::class, "addAvis"]);
+ Router::request(HttpMethod::PUT, "/api/updateAvis", [AvisController::class, "updateAvis"]);
  Router::request(HttpMethod::DELETE, "/api/deleteAvis/*", [AvisController::class, "delete"]);
