@@ -67,4 +67,17 @@ class UsersModel extends Model
 			throw $e;
 		}
 	}
+	public function verifyUser($login,$password)
+	{
+		try {
+			// Create a UserDAO instance to access the data layer
+			$dao = new UsersDAO();
+			// Call UserDAO selectAll() method to get all records
+			// Results are stored in the $rows property
+			$this->rows = $dao->verifyUser($login,$password);
+		} catch (Exception $e) {
+			// Throws an exception in case of error during execution
+			throw $e;
+		}
+	}
 }

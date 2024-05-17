@@ -67,4 +67,15 @@ class UsersController extends Controller
         // Sends the response in JSON format containing the records obtained
         parent::sendJSONResponse("User removed successfully!");
     }
+	public static function verifyUser() {
+		$data = parent::receiveJSONRequest()[0];
+		$login = $data['login'];
+		$password = $data['password'];
+		$model = new UsersModel();
+		$model->verifyUser($login, $password);
+		if ($model->rows == []) {
+			parent::sendJSONResponse(array('error' => "Invalid login or password"));
+		}
+		parent::sendJSONResponse($model->rows);
+	}
 }
