@@ -108,9 +108,9 @@ class Router
 					if ($isModifiedUrl) {
 						$arrRoute = explode("/", self::getCurrentUri());
 						$id = (int) $arrRoute[count($arrRoute)-1];
-
 						$route['callback']($id);
 					} else {
+						
 						$route['callback']();
 					}
 					continue;
