@@ -14,7 +14,7 @@ class FichierController extends Controller
         $model = new FichierModel();
         
         // Call FichierModel getAll() method to get all records
-        $model->getAll();
+        $model->index();
 		
         // Sends the response in JSON format containing the records obtained
         parent::sendJSONResponse($model->rows);
@@ -25,7 +25,7 @@ class FichierController extends Controller
         // Create a new FichierModel instance to access the model layer
         $model = new FichierModel();
         // Call FichierModel getAll() method to get all records
-        $model->get($id);
+        $model->show($id);
         
         // Sends the response in JSON format containing the records obtained
         parent::sendJSONResponse($model->rows);
