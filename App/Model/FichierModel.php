@@ -11,7 +11,7 @@ class FichierModel extends Model
     public $id_fichier, $nom_fichier, $type, $id_annee, $id_semestre;
 
     // Method to get all records from the Fichier table
-    public function getAll()
+    public function index()
     {
         try {
             // Create a FichierDAO instance to access the data layer
@@ -24,7 +24,7 @@ class FichierModel extends Model
             throw $e;
         }
     }
-	public function get(int $id)
+	public function show(int $id)
 	{
 		try {
 			// Create a FichierDAO instance to access the data layer

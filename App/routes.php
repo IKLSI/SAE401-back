@@ -57,11 +57,13 @@ use App\Modules\Router;
  Router::request(HttpMethod::GET, "/api/etuComp", [EtuCompController::class, "index"]);
  Router::request(HttpMethod::GET, "/api/etuComp/*", [EtuCompController::class, "show"]);
  Router::request(HttpMethod::POST, "/api/addEtuComp", [EtuCompController::class, "addEtuComp"]);
+ Router::request(HttpMethod::POST, "/api/addManyEtuComp", [EtuCompController::class, "addManyEtuComp"]);
  Router::request(HttpMethod::DELETE, "/api/deleteEtuComp/*", [EtuCompController::class, "delete"]);
 
  Router::request(HttpMethod::GET, "/api/etuModule", [EtuModuleController::class, "index"]);
  Router::request(HttpMethod::GET, "/api/etuModule/*", [EtuModuleController::class, "show"]);
  Router::request(HttpMethod::POST, "/api/addEtuModule", [EtuModuleController::class, "addEtuModule"]);
+ Router::request(HttpMethod::POST, "/api/addManyEtuModule", [EtuModuleController::class, "addManyEtuModule"]);
  Router::request(HttpMethod::PUT, "/api/updateEtuModule", [EtuModuleController::class, "updateEtuModule"]);
  Router::request(HttpMethod::DELETE, "/api/deleteEtuModule/*", [EtuModuleController::class, "delete"]);
 
@@ -76,3 +78,9 @@ use App\Modules\Router;
  Router::request(HttpMethod::POST, "/api/addAvis", [AvisController::class, "addAvis"]);
  Router::request(HttpMethod::PUT, "/api/updateAvis", [AvisController::class, "updateAvis"]);
  Router::request(HttpMethod::DELETE, "/api/deleteAvis/*", [AvisController::class, "delete"]);
+
+ Router::request(HttpMethod::GET, "/api/fichier", [FichierController::class, "index"]);
+ Router::request(HttpMethod::GET, "/api/fichier/*", [FichierController::class, "show"]);
+ Router::request(HttpMethod::POST, "/api/addFichier", [FichierController::class, "addFichier"]);
+ Router::request(HttpMethod::PUT, "/api/updateFichier", [FichierController::class, "updateFichier"]);
+ Router::request(HttpMethod::DELETE, "/api/deleteFichier/*", [FichierController::class, "delete"]);
