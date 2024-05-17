@@ -8,6 +8,7 @@ use App\Controller\EtuCompController;
 use App\Controller\EtudiantController;
 use App\Controller\EtuModuleController;
 use App\Controller\EtuSemestreController;
+use App\Controller\FichierController;
 use App\Controller\ModuleController;
 use App\Controller\SemestreController;
 use App\Controller\UsersController;

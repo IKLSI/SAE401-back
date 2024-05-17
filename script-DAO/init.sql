@@ -145,3 +145,4 @@ INSERT INTO EtuComp VALUES (1, 1, 15.15, 'ADM');
 INSERT INTO EtuModule VALUES (1, 1, 12.00);
 INSERT INTO Avis (id_etu, avis_master, avis_inge) VALUES (1, 'Favorable', 'Réservé');
 INSERT INTO Utilisateur (login_user, password_user, isAdmin) VALUES ('admin', 'admin', true);
+INSERT INTO Fichier (nom_fichier, type, id_annee, id_semestre) VALUES ('test_nom', 'commission', 1, 1);
