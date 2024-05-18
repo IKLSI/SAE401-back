@@ -55,6 +55,33 @@ class CoefficientController extends Controller
         parent::sendJSONResponse("Coefficient added successfully!");
     }
 
+    public static function addManyCoefficient()
+    {
+        $manyData = parent::receiveJSONRequest();
+
+        foreach ($manyData as $data) {
+            try {
+                // Create a new CoefficientModel instance
+                $coef = new CoefficientModel();
+    
+                // Assign data from the POST request to the CoefficientModel object
+                $coef->id_comp = $data['id_comp'];
+                $coef->id_module = $data['id_module'];
+                $coef->coef = $data['coef'];
+    
+                // Call the insert method of CoefficientModel to insert the data into the database
+                $coef->insert();    
+            } catch (Exception $e) {
+                // Handle the exception (e.g., return an error response)
+                return "Error: " . $e->getMessage();
+            }
+            
+            // If everything is successful, return a success message or redirect to another page
+            
+        }
+        parent::sendJSONResponse("Coefficients added successfully!");
+    }
+
     public static function updateCoefficient()
     {
         $data = parent::receiveJSONRequest()[0];

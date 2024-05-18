@@ -50,7 +50,6 @@ class EtuSemestreDAO extends DAO
         try {
             // Definition of the SQL query to insert a new record into the "Users" table
             $sql = "INSERT INTO EtuSemestre (id_etu, id_semestre, absences, rang, moyenne, validation) VALUES (:id_etu, :id_semestre, :absences, :rang, :moyenne, :validation)";
-            
             // Prepare SQL query using database connection
             $stmt = $this->conn->prepare($sql);
             
@@ -65,6 +64,55 @@ class EtuSemestreDAO extends DAO
             // Execute the prepared query
             $stmt->execute();
             return "EtuSemestre added successfully!";
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
+
+    public function update(int $id_etu, int $id_semestre, int $absences, int $rang, float $moyenne, String $validation)
+    {
+        try {
+            // Definition of the SQL query to insert a new record into the "Users" table
+            $sql = "UPDATE EtuSemestre absences=:absences, rang=:rang, moyenne=:moyenne, validation=:validation
+                    WHERE id_etu=:id_etu and id_semestre=:id_semestre";
+            // Prepare SQL query using database connection
+            $stmt = $this->conn->prepare($sql);
+            
+            // Bind parameters
+			$stmt->bindValue(':id_etu', $id_etu);
+            $stmt->bindValue(':id_semestre', $id_semestre);
+            $stmt->bindValue(':absences', $absences);
+            $stmt->bindValue(':rang', $rang);
+            $stmt->bindValue(':moyenne', $moyenne);
+            $stmt->bindValue(':validation', $validation);
+
+            // Execute the prepared query
+            $stmt->execute();
+            return "EtuSemestre updated successfully!";
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
+
+    public function updateValidation(int $id_etu, int $id_semestre, String $validation)
+    {
+        try {
+            // Definition of the SQL query to insert a new record into the "Users" table
+            $sql = "UPDATE EtuSemestre validation=:validation
+                    WHERE id_etu=:id_etu and id_semestre=:id_semestre";
+            // Prepare SQL query using database connection
+            $stmt = $this->conn->prepare($sql);
+            
+            // Bind parameters
+			$stmt->bindValue(':id_etu', $id_etu);
+            $stmt->bindValue(':id_semestre', $id_semestre);
+            $stmt->bindValue(':validation', $validation);
+
+            // Execute the prepared query
+            $stmt->execute();
+            return "EtuSemestre updated successfully!";
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
             throw $e;

@@ -52,6 +52,34 @@ class EtuCompModel extends Model
         }
     }
 
+
+    public function update()
+    {
+        try {
+            // Create a new EtuCompDAO instance to access the data layer
+            $dao = new EtuCompDAO();
+            // Call the insert method of EtuCompDAO and pass this UsersModel instance
+            $dao->update($this->id_etu, $this->id_comp,$this->moyenne_comp,$this->passage, $this->bonus);
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
+
+    public function updatePassage()
+    {
+        try {
+            // Create a new EtuCompDAO instance to access the data layer
+            $dao = new EtuCompDAO();
+            // Call the insert method of EtuCompDAO and pass this UsersModel instance
+            $dao->updatePassage($this->id_etu, $this->id_comp,$this->passage);
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
+
+
     public function delete(int $id)
 	{
 		try {

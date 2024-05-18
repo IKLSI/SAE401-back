@@ -79,12 +79,63 @@ class EtuCompController extends Controller
                 // Handle the exception (e.g., return an error response)
                 return "Error: " . $e->getMessage();
             }
-            
-            // If everything is successful, return a success message or redirect to another page
-            parent::sendJSONResponse("EtuComp added successfully!");
+                        
         }
+        parent::sendJSONResponse("EtuComps added successfully!");
         
     }
+
+    public static function updatePassageEtuComp()
+    {
+        $data = parent::receiveJSONRequest()[0];
+
+        try {
+            // Create a new UsersModel instance
+            $user = new EtuCompModel();
+            
+            // Assign data from the POST request to the UsersModel object
+            $user->id_etu = $data['id_etu'];
+            $user->id_comp = $data['id_comp'];
+            $user->passage = $data['passage'];
+
+            // Call the insert method of UsersModel to insert the data into the database
+            $user->updatePassage();
+        } catch (Exception $e) {
+            // Handle the exception (e.g., return an error response)
+            return "Error: " . $e->getMessage();
+        }
+        
+        // If everything is successful, return a success message or redirect to another page
+        parent::sendJSONResponse("EtuComp added successfully!");
+    }
+
+    public static function updateEtuComp()
+    {
+        $data = parent::receiveJSONRequest()[0];
+
+        try {
+            // Create a new UsersModel instance
+            $user = new EtuCompModel();
+            
+            // Assign data from the POST request to the UsersModel object
+            $user->id_etu = $data['id_etu'];
+            $user->id_comp = $data['id_comp'];
+            $user->moyenne_comp = $data['moyenne_comp'];
+            $user->passage = $data['passage'];
+            $user->bonus = $data['bonus'];
+
+            // Call the insert method of UsersModel to insert the data into the database
+            $user->update();
+        } catch (Exception $e) {
+            // Handle the exception (e.g., return an error response)
+            return "Error: " . $e->getMessage();
+        }
+        
+        // If everything is successful, return a success message or redirect to another page
+        parent::sendJSONResponse("EtuComp added successfully!");
+    }
+
+
 
     public static function delete(int $id): void
     {

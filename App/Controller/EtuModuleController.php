@@ -59,6 +59,7 @@ class EtuModuleController extends Controller
     {
         $manyData = parent::receiveJSONRequest();
         foreach($manyData as $data) {
+            print_r($data);
             try {
                 // Create a new EtuModuleModel instance
                 $user = new EtuModuleModel();
@@ -74,10 +75,10 @@ class EtuModuleController extends Controller
                 // Handle the exception (e.g., return an error response)
                 return "Error: " . $e->getMessage();
             }
-            
-            // If everything is successful, return a success message or redirect to another page
-            parent::sendJSONResponse("EtuModule added successfully!");
+                        
         }
+        parent::sendJSONResponse("EtuModules added successfully!");
+
     }
 
     public static function updateEtuModule()

@@ -47,17 +47,23 @@ use App\Modules\Router;
  Router::request(HttpMethod::GET, "/api/coefficient", [CoefficientController::class, "index"]);
  Router::request(HttpMethod::GET, "/api/coefficient/*", [CoefficientController::class, "show"]);
  Router::request(HttpMethod::POST, "/api/addCoefficient", [CoefficientController::class, "addCoefficient"]);
+ Router::request(HttpMethod::POST, "/api/addManyCoefficient", [CoefficientController::class, "addManyCoefficient"]);
  Router::request(HttpMethod::PUT, "/api/updateCoefficient", [CoefficientController::class, "updateCoefficient"]);
  Router::request(HttpMethod::DELETE, "/api/deleteCoefficient/*", [CoefficientController::class, "delete"]);
 
  Router::request(HttpMethod::GET, "/api/etuSemestre", [EtuSemestreController::class, "index"]);
  Router::request(HttpMethod::GET, "/api/etuSemestre/*", [EtuSemestreController::class, "show"]);
  Router::request(HttpMethod::POST, "/api/addEtuSemestre", [EtuSemestreController::class, "addEtuSemestre"]);
+ Router::request(HttpMethod::PUT, "/api/updateEtuSemestre", [EtuSemestreController::class, "updateEtuSemestre"]);
+ Router::request(HttpMethod::PUT, "/api/updateValidationEtuSemestre", [EtuSemestreController::class, "updateValidationEtuSemestre"]);
+ Router::request(HttpMethod::POST, "/api/addManyEtuSemestre", [EtuSemestreController::class, "addManyEtuSemestre"]);
  Router::request(HttpMethod::DELETE, "/api/deleteEtuSemestre/*", [EtuSemestreController::class, "delete"]);
 
  Router::request(HttpMethod::GET, "/api/etuComp", [EtuCompController::class, "index"]);
  Router::request(HttpMethod::GET, "/api/etuComp/*", [EtuCompController::class, "show"]);
  Router::request(HttpMethod::POST, "/api/addEtuComp", [EtuCompController::class, "addEtuComp"]);
+ Router::request(HttpMethod::PUT, "/api/updateEtuComp", [EtuCompController::class, "updateEtuComp"]);
+ Router::request(HttpMethod::PUT, "/api/updatePassageEtuComp", [EtuCompController::class, "updatePassageEtuComp"]);
  Router::request(HttpMethod::POST, "/api/addManyEtuComp", [EtuCompController::class, "addManyEtuComp"]);
  Router::request(HttpMethod::DELETE, "/api/deleteEtuComp/*", [EtuCompController::class, "delete"]);
 

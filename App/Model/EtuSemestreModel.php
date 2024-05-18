@@ -52,6 +52,32 @@ class EtuSemestreModel extends Model
          }
      }
 
+    public function update()
+    {
+        try {
+            // Create a new EtuSemestreDAO instance to access the data layer
+            $dao = new EtuSemestreDAO();
+            // Call the insert method of EtuSemestreDAO and pass this EtuSemestreDAO instance
+            $dao->update($this->id_etu, $this->id_semestre,$this->absences, $this->rang, $this->moyenne, $this->validation);
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
+
+    public function updateValidation()
+    {
+        try {
+            // Create a new EtuSemestreDAO instance to access the data layer
+            $dao = new EtuSemestreDAO();
+            // Call the insert method of EtuSemestreDAO and pass this EtuSemestreDAO instance
+            $dao->updateValidation($this->id_etu, $this->id_semestre, $this->validation);
+        } catch (Exception $e) {
+            // Throws an exception in case of error during execution
+            throw $e;
+        }
+    }
+
      public function delete(int $id)
 	{
 		try {

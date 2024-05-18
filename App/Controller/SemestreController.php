@@ -51,7 +51,7 @@ class SemestreController extends Controller
         }
         
         // If everything is successful, return a success message or redirect to another page
-        parent::sendJSONResponse("SemestreModel added successfully!");
+        parent::sendJSONResponse("Semestre added successfully!");
     }
 
     public static function delete(int $id): void
