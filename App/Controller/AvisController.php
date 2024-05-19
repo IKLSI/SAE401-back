@@ -68,7 +68,6 @@ class AvisController extends Controller
             $avis->avis_master = $data['avis_master'];
             $avis->avis_inge = $data['avis_inge'];
             $avis->commentaire = $data['commentaire'];
-
             // Call the update method of AvisModel to insert the data into the database
             $avis->update();
         } catch (Exception $e) {

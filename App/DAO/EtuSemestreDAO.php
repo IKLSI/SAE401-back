@@ -74,7 +74,7 @@ class EtuSemestreDAO extends DAO
     {
         try {
             // Definition of the SQL query to insert a new record into the "Users" table
-            $sql = "UPDATE EtuSemestre absences=:absences, rang=:rang, moyenne=:moyenne, validation=:validation
+            $sql = "UPDATE EtuSemestre SET absences=:absences, rang=:rang, moyenne=:moyenne, validation=:validation
                     WHERE id_etu=:id_etu and id_semestre=:id_semestre";
             // Prepare SQL query using database connection
             $stmt = $this->conn->prepare($sql);
@@ -100,9 +100,9 @@ class EtuSemestreDAO extends DAO
     {
         try {
             // Definition of the SQL query to insert a new record into the "Users" table
-            $sql = "UPDATE EtuSemestre validation=:validation
+            $sql = "UPDATE EtuSemestre SET validation=:validation
                     WHERE id_etu=:id_etu and id_semestre=:id_semestre";
-            // Prepare SQL query using database connection
+            // Prepare SQL query using database connectionS
             $stmt = $this->conn->prepare($sql);
             
             // Bind parameters

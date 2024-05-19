@@ -12,6 +12,7 @@ abstract class  Controller
 	const PRAGMA_NO_CACHE = "Pragma: no-cache"; // No-cache policy
 	const Access_Control_Allow_Credentials = "Access-Control-Allow-Credentials: true";
 	const ACCES_CONTROL_ALLOW_HEADERS = "Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With";
+	const ACCESS_CONTROL_ALLOW_METHODS = "Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS";
 
 	/**
 	 * Sends a JSON response with the provided data.
@@ -50,6 +51,7 @@ abstract class  Controller
 		header(self::PRAGMA_NO_CACHE);
 		header(self::Access_Control_Allow_Credentials);
 		header(self::ACCES_CONTROL_ALLOW_HEADERS);
+		header(self::ACCESS_CONTROL_ALLOW_METHODS);
 	}
 	
 }

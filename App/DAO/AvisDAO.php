@@ -84,7 +84,7 @@ class AvisDAO extends DAO
             $stmt->bindValue(':avis_master', $avis_master);
             $stmt->bindValue(':avis_inge', $avis_inge);
             $stmt->bindValue(':commentaire', $commentaire);
-
+            
             // Execute the prepared query
             $stmt->execute();
             return "Avis updated successfully!";
