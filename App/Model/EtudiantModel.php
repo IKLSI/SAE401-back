@@ -59,7 +59,7 @@ class EtudiantModel extends Model
             // Create a new EtudiantDAO instance to access the data layer
             $dao = new EtudiantDAO();
             // Call the insert method of EtudiantDAO and pass this EtudiantModel instance
-            $dao->insert($this->code_etu, $this->nom_etu, $this->prenom_etu, $this->groupe_TD, $this->groupe_TP, $this->cursus, $this->alternant);
+            $dao->insert($this->id_etu, $this->code_etu, $this->nom_etu, $this->prenom_etu, $this->groupe_TD, $this->groupe_TP, $this->cursus, $this->alternant);
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
             throw $e;
@@ -72,7 +72,7 @@ class EtudiantModel extends Model
             // Create a new EtudiantDAO instance to access the data layer
             $dao = new EtudiantDAO();
             // Call the insert method of EtudiantDAO and pass this EtudiantModel instance
-            $dao->update($this->id_etu, $this->nom_etu, $this->prenom_etu, $this->groupe_TD, $this->groupe_TP, $this->cursus, $this->alternant);
+            $dao->update($this->id_etu, $this->nom_etu, $this->prenom_etu, $this->groupe_TD, $this->groupe_TP, $this->alternant);
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
             throw $e;

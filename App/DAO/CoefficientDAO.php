@@ -74,7 +74,7 @@ class CoefficientDAO extends DAO
     {
         try {
             // Definition of the SQL query to insert a new record into the "Coefficient" table
-            $sql = "UPDATE Etudiant SET coef = :coef
+            $sql = "UPDATE Coefficient SET coef = :coef
                     WHERE id_coef = :id_coef";
 
             // Prepare SQL query using database connection
@@ -83,7 +83,7 @@ class CoefficientDAO extends DAO
             // Bind parameters
             $stmt->bindValue(':id_coef', $id_coef);
             $stmt->bindValue(':coef', $coef);
-
+            
             // Execute the prepared query
             $stmt->execute();
             return "Coefficient updated successfully!";
