@@ -71,9 +71,9 @@ class UsersController extends Controller
 		// basic auth
 		$model = new UsersModel();
 		$model->verifyUser();
-		if ($model->rows == []) {
+		if (isset($model->rows[0]->login_user) === false) {
 			parent::sendJSONResponse(array('error' => "Invalid login or password"));
 		}
-		parent::sendJSONResponse(array('token' => base64_encode($model->rows[0]->login_user . ':' . $model->rows[0]->password_user)));
+		parent::sendJSONResponse(array('token' => $model->uuid, 'isadmin' => $model->isadmin));
 	}
 }

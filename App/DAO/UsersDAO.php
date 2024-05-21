@@ -86,7 +86,7 @@ class UsersDAO extends DAO
 		// Returns all query results as class objects (based on DAO class)
 		return $stmt->fetchAll("User removed successfully!");
 	}
-	public function verifyUser($login,$password)
+	public function verifyUser($login)
 	{
 		// Definition of the SQL query to select all records from the "User" table
 		$sql = "SELECT * FROM Utilisateur WHERE login_user = :login";
@@ -101,6 +101,21 @@ class UsersDAO extends DAO
 		$stmt->execute();
 
 		// Returns all query results as class objects (based on DAO class)
+		return $stmt->fetchAll(DAO::FETCH_CLASS);
+	}
+	public function updateUuid ($id, $uuid) {
+		$sql = "UPDATE Utilisateur SET uuid_user = :uuid WHERE id_user = :id";
+		$stmt = $this->conn->prepare($sql);
+		$stmt->bindValue(':uuid', $uuid);
+		$stmt->bindValue(':id', $id);
+		$stmt->execute();
+		return $uuid;
+	}
+	public function verifyUuid($uuid) {
+		$sql = "SELECT * FROM Utilisateur WHERE uuid_user = :uuid";
+		$stmt = $this->conn->prepare($sql);
+		$stmt->bindValue(':uuid', $uuid);
+		$stmt->execute();
 		return $stmt->fetchAll(DAO::FETCH_CLASS);
 	}
 }
