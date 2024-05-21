@@ -77,6 +77,11 @@ class UsersModel extends Model
 			// Call UserDAO selectAll() method to get all records
 			// Results are stored in the $rows property
 			$this->rows = $dao->verifyUser($login,$password);
+			if (password_verify($password, $this->rows[0]->password_user)) {
+				$this->id = $this->rows[0]->id_user;
+				$this->login = $this->rows[0]->login_user;
+				$this->isadmin = $this->rows[0]->isadmin;
+			}
 
 		} catch (Exception $e) {
 			// Throws an exception in case of error during execution

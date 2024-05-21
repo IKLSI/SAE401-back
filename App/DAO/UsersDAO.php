@@ -89,14 +89,13 @@ class UsersDAO extends DAO
 	public function verifyUser($login,$password)
 	{
 		// Definition of the SQL query to select all records from the "User" table
-		$sql = "SELECT * FROM Utilisateur WHERE login_user = :login AND password_user = :password";
+		$sql = "SELECT * FROM Utilisateur WHERE login_user = :login";
 
 		// Prepare SQL query using database connection
 		$stmt = $this->conn->prepare($sql);
 
 		// Bind the parameter :id to the value $id
 		$stmt->bindValue(':login', $login);
-		$stmt->bindValue(':password', $password);
 
 		// Execute the prepared query
 		$stmt->execute();
