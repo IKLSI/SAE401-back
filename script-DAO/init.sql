@@ -117,8 +117,9 @@ CREATE TABLE Utilisateur
 (
     id_user SERIAL,
     login_user VARCHAR(50),
-    password_user VARCHAR(50),
+    password_user VARCHAR(65),
     isAdmin BOOLEAN,
+	uuid_user VARCHAR(36),
     PRIMARY KEY (id_user)
 );
 
@@ -136,4 +137,5 @@ CREATE TABlE Fichier
 
 
 INSERT INTO Annee (annee) VALUES ('2022-2023');
-INSERT INTO Utilisateur (login_user, password_user, isAdmin) VALUES ('admin', 'admin', true);
+INSERT INTO Utilisateur (login_user, password_user, isAdmin) VALUES ('admin', '$2y$10$VIg4LgZHlt3cXL/spsBpGu4HngYD6Osnj8ox.W75eiFYOrrWv2fhG', true);
+INSERT INTO Utilisateur (login_user, password_user, isAdmin) VALUES ('user', '$2y$10$SiFa7utiZPusNgIJ0nx45uikj1vfjvuzVi1s8wCfIcO3iii5kuiF6', false);
