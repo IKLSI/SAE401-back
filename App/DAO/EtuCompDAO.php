@@ -17,13 +17,12 @@ class EtuCompDAO extends DAO
     {
         // Definition of the SQL query to select all records from the "EtuComp" table
         $sql = "SELECT * FROM EtuComp";
-
+        
         // Prepare SQL query using database connection
         $stmt = $this->conn->prepare($sql);
 
         // Execute the prepared query
         $stmt->execute();
-
         // Returns all query results as class objects (based on DAO class)
         return $stmt->fetchAll(DAO::FETCH_CLASS);
     }
