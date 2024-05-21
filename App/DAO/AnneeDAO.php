@@ -60,7 +60,10 @@ class AnneeDAO extends DAO
 
             // Execute the prepared query
             $stmt->execute();
-            return "Annee added successfully!";
+			// get the last inserted ID
+			$id = $this->conn->lastInsertId();
+			return $id;
+
         } catch (Exception $e) {
             // Throws an exception in case of error during execution
             throw $e;

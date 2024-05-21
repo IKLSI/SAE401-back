@@ -53,7 +53,7 @@ class AnneeController extends Controller
         }
         
         // If everything is successful, return a success message or redirect to another page
-        parent::sendJSONResponse("Annee added successfully!");
+        parent::sendJSONResponse(array('id_annee' => $annee->id_annee, 'annee' => $annee->annee));
     }
 
     
