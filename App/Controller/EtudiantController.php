@@ -74,7 +74,6 @@ class EtudiantController extends Controller
     public static function updateEtudiant()
     {
         $data = parent::receiveJSONRequest()[0];
-        print_r($data);
 
         try {
             // Create a new EtudiantModel instance
@@ -86,7 +85,11 @@ class EtudiantController extends Controller
             $etudiant->prenom_etu = $data['prenom_etu'];
             $etudiant->groupe_TD = $data['groupe_TD'];
             $etudiant->groupe_TP = $data['groupe_TP'];
-            $etudiant->cursus = $data['cursus'];
+            if (is_null($data['cursus'])) {
+                $etudiant->cursus = "";
+            } else {
+                $etudiant->cursus = $data['cursus'];
+            }
             $etudiant->alternant = $data['alternant'];
 
             // Call the insert method of EtudiantModel to insert the data into the database

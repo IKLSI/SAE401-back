@@ -98,19 +98,29 @@ class EtudiantDAO extends DAO
     {
         try {
             // Definition of the SQL query to insert a new record into the "Etudiant" table
-            $sql = "UPDATE Etudiant SET nom_etu = :nom_etu, prenom_etu = :prenom_etu, groupe_TD = :groupe_TD, groupe_TP = :groupe_TP, alternant = :alternant, cursus = :cursus
+            if (is_null($cursus) || $cursus == "") {
+                $sql = "UPDATE Etudiant SET nom_etu = :nom_etu, prenom_etu = :prenom_etu, groupe_TD = :groupe_TD, groupe_TP = :groupe_TP, alternant = :alternant
                     WHERE id_etu = :id_etu";
+            } else {
+                $sql = "UPDATE Etudiant SET nom_etu = :nom_etu, prenom_etu = :prenom_etu, groupe_TD = :groupe_TD, groupe_TP = :groupe_TP, alternant = :alternant, cursus = :cursus
+                    WHERE id_etu = :id_etu";
+            }
             
             // Prepare SQL query using database connection
             $stmt = $this->conn->prepare($sql);
+            
             // Bind parameters
             $stmt->bindValue(':id_etu', $id_etu);
-            $stmt->bindValue(':nom_etu', $nom_etu); 
+            $stmt->bindValue(':nom_etu', $nom_etu);
             $stmt->bindValue(':prenom_etu', $prenom_etu);
             $stmt->bindValue(':groupe_TD', $groupe_TD);
             $stmt->bindValue(':groupe_TP', $groupe_TP);
-            $stmt->bindValue(':cursus', $cursus);
             $stmt->bindValue(':alternant', $alternant);
+            
+            if (!is_null($cursus) && $cursus != "") {
+                $stmt->bindValue(':cursus', $cursus);
+            }
+            
 
             // Execute the prepared query
             $stmt->execute();
