@@ -86,6 +86,7 @@ class EtudiantController extends Controller
             $etudiant->prenom_etu = $data['prenom_etu'];
             $etudiant->groupe_TD = $data['groupe_TD'];
             $etudiant->groupe_TP = $data['groupe_TP'];
+            $etudiant->cursus = $data['cursus'];
             $etudiant->alternant = $data['alternant'];
 
             // Call the insert method of EtudiantModel to insert the data into the database

@@ -94,11 +94,11 @@ class EtudiantDAO extends DAO
         }
     }
 
-    public function update(int $id_etu, String $nom_etu, String $prenom_etu, String $groupe_TD, String $groupe_TP, String $alternant)
+    public function update(int $id_etu, String $nom_etu, String $prenom_etu, String $cursus, String $groupe_TD, String $groupe_TP, String $alternant)
     {
         try {
             // Definition of the SQL query to insert a new record into the "Etudiant" table
-            $sql = "UPDATE Etudiant SET nom_etu = :nom_etu, prenom_etu = :prenom_etu, groupe_TD = :groupe_TD, groupe_TP = :groupe_TP, alternant = :alternant
+            $sql = "UPDATE Etudiant SET nom_etu = :nom_etu, prenom_etu = :prenom_etu, groupe_TD = :groupe_TD, groupe_TP = :groupe_TP, alternant = :alternant, cursus = :cursus
                     WHERE id_etu = :id_etu";
             
             // Prepare SQL query using database connection
@@ -109,6 +109,7 @@ class EtudiantDAO extends DAO
             $stmt->bindValue(':prenom_etu', $prenom_etu);
             $stmt->bindValue(':groupe_TD', $groupe_TD);
             $stmt->bindValue(':groupe_TP', $groupe_TP);
+            $stmt->bindValue(':cursus', $cursus);
             $stmt->bindValue(':alternant', $alternant);
 
             // Execute the prepared query

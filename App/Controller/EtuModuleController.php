@@ -59,7 +59,6 @@ class EtuModuleController extends Controller
     {
         $manyData = parent::receiveJSONRequest();
         foreach($manyData as $data) {
-            print_r($data);
             try {
                 // Create a new EtuModuleModel instance
                 $user = new EtuModuleModel();
@@ -95,7 +94,7 @@ class EtuModuleController extends Controller
             $user->note = $data['note'];
 
             // Call the insert method of EtuModuleModel to insert the data into the database
-            $user->insert();
+            $user->update();
         } catch (Exception $e) {
             // Handle the exception (e.g., return an error response)
             return "Error: " . $e->getMessage();

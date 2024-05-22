@@ -17,8 +17,8 @@ CREATE TABLE Etudiant
     code_etu VARCHAR(10),
     nom_etu VARCHAR(30),
     prenom_etu VARCHAR(30),
-    groupe_TD VARCHAR(2),
-    groupe_TP VARCHAR(2),
+    groupe_TD VARCHAR(10),
+    groupe_TP VARCHAR(10),
     cursus VARCHAR(30),
     alternant BOOLEAN,
     PRIMARY KEY (id_etu)
