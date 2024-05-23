@@ -89,6 +89,10 @@ class EtuModuleDAO extends DAO
             $stmt->bindValue(':id_coef', $id_coef);
             $stmt->bindValue(':note', $note);
 
+            print_r($id_etu);
+            print_r($id_coef);
+            print_r($note);
+
             // Execute the prepared query
             $stmt->execute();
             return "EtuModule updated successfully!";

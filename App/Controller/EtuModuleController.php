@@ -83,6 +83,7 @@ class EtuModuleController extends Controller
     public static function updateEtuModule()
     {
         $data = parent::receiveJSONRequest()[0];
+        print_r($data);
 
         try {
             // Create a new EtuModuleModel instance
