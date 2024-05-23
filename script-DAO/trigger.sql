@@ -69,10 +69,11 @@ EXECUTE FUNCTION update_moyenne_semestre();
 
 CREATE OR REPLACE FUNCTION update_bonus_comp()
 RETURNS TRIGGER AS $$
+DECLARE ancien_bonus int;
 BEGIN
     -- Mettre à jour la compétence si le bonus change
     UPDATE EtuComp
-    SET moyenne_comp = moyenne_comp + NEW.bonus - bonus
+    SET moyenne_comp = moyenne_comp + NEW.bonus - OLD.bonus
     WHERE id_etu = NEW.id_etu
     AND id_comp = NEW.id_comp;
 
