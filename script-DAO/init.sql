@@ -123,7 +123,7 @@ CREATE TABLE Utilisateur
     PRIMARY KEY (id_user)
 );
 
-CREATE TABlE Fichier
+CREATE TABLE Fichier
 (
     id_fichier SERIAL,
     nom_fichier TEXT,

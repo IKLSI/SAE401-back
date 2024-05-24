@@ -31,7 +31,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE TRIGGER trigger_module_moy
+CREATE TRIGGER trigger_module_moy
 AFTER UPDATE OF note ON EtuModule
 FOR EACH ROW
 EXECUTE FUNCTION update_moyenne_comp();
@@ -62,7 +62,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE TRIGGER trigger_comp_moy
+CREATE TRIGGER trigger_comp_moy
 AFTER UPDATE OF moyenne_comp ON EtuComp
 FOR EACH ROW
 EXECUTE FUNCTION update_moyenne_semestre();
@@ -81,7 +81,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE TRIGGER trigger_bonus_comp
+CREATE TRIGGER trigger_bonus_comp
 AFTER UPDATE OF bonus ON EtuComp
 FOR EACH ROW
 EXECUTE FUNCTION update_bonus_comp();
