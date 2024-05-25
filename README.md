@@ -18,6 +18,7 @@ Docs available in [pt-BR](README-ptBR.md)
     ```bash
     composer install
     ```
+    If you don't have Composer installed, you can download it from the [official website](https://getcomposer.org/download/).
 
 3. This will install all dependencies listed in the `composer.json` file and ensure that you work with the exact versions specified in `composer.lock`. 🔒
 
@@ -42,7 +43,7 @@ Docs available in [pt-BR](README-ptBR.md)
     - **API Configuration:**
         - `API_HOST`: The address where the API will be executed (e.g. `localhost`). 🌐
         - `API_PORT`: The port on which the API will run (e.g. `8000`). 🔌
-        - `TIMEZONE`: The application's time zone (for example, `America/Sao_Paulo`). 🕰️
+        - `TIMEZONE`: The application's time zone (for example, `Europe/Paris`). 🕰️
 
     - **Database Configuration:**
         - `DB_HOST`: The address of the database server. 🏠
